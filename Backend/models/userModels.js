@@ -1,1 +1,1 @@
-const { model, Schema} = require()
+const { model, Schema} = require('../connections')
