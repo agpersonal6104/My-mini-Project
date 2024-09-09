@@ -20,9 +20,10 @@ const Login = () => {
               <h1 className=''>OR</h1>
             </div>
             
-            <div className='flex flex-col items-center justify-center gap-4'>
+            <div className='flex flex-col items-center justify-center gap-6'>
               <input type="text" className='bg-gray-200 h-[50px] w-[79%] px-4' placeholder='Enter Email Address'/>
               <input type="text" className='bg-gray-200 h-[50px] w-[79%] px-4' placeholder='Enter your Password'/>
+              <button className='text-white bg-black h-[50px] w-[79%] px-4'>Log In</button>
             </div>
         </div>
     </div>
