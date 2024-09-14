@@ -54,13 +54,42 @@ const Login = () => {
               
             </div>
             
-            <form className='flex flex-col items-center justify-center h-[55%]'>
+            <form
+            onSubmit={loginForm.handleSubmit}
+            className='flex flex-col items-center justify-center h-[55%]'>
 
               <label htmlFor="email" className='self-start my-2 font-bold px-11 text-cyan-700'>Email</label>
-              <input id='email' type="text" className='h-[50px] w-[79%] px-4 border border-cyan-700 rounded-lg' placeholder='Enter Email Address'/>
+              <input
+              id='email'
+              type="text"
+              onChange={loginForm.handleChange}
+              value={loginForm.values.email}
+              className='h-[50px] w-[79%] px-4 border border-cyan-700 rounded-lg'
+              placeholder='Enter Email Address'
+              aria-describedby='email-error'/>
+              {
+                signupForm.touched.email && (
+                  <p className="text-xs text-red-600" id="email-error">
+                    {signupForm.errors.email}
+                  </p>
+                )
+              }
 
               <label htmlFor="password" className='self-start my-2 font-bold px-11 text-cyan-700'>Password</label>
-              <input id='password' type="text" className='h-[50px] w-[79%] px-4 border border-cyan-700 rounded-lg' placeholder='Enter your Password'/>
+              <input id='password'
+              type="text"
+              onChange={loginForm.handleChange}
+              value={loginForm.values.password}
+              className='h-[50px] w-[79%] px-4 border border-cyan-700 rounded-lg'
+              placeholder='Enter your Password'
+              aria-describedby='password-error'/>
+              {
+                signupForm.touched.password && (
+                  <p className="text-xs text-red-600" id="password-error">
+                    {signupForm.errors.password}
+                  </p>
+                )
+              }
               
               <button className='text-white bg-cyan-700 h-[50px] w-[79%] px-4 my-6 font-bold rounded-lg hover:bg-cyan-500'>Log In</button>
               
