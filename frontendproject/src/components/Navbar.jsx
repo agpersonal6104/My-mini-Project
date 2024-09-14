@@ -1,3 +1,5 @@
+'use client';
+import Link from 'next/link';
 import React from 'react'
 
 const Navbar = () => {
@@ -5,20 +7,20 @@ const Navbar = () => {
     <div>
         <>
   {/* ========== HEADER ========== */}
-  <header className="z-50 flex flex-wrap w-full bg-white border-b border-gray-200 md:justify-start md:flex-nowrap dark:bg-neutral-800 dark:border-neutral-700">
+  <header className="z-50 flex flex-wrap w-full bg-white border-b border-gray-200 md:justify-start md:flex-nowrap">
     <nav className="relative max-w-[85rem] w-full mx-auto md:flex md:items-center md:justify-between md:gap-3 py-2 px-4 sm:px-6 lg:px-8">
       <div className="flex items-center justify-between gap-x-1">
-        <a
-          className="flex-none text-xl font-semibold text-black focus:outline-none focus:opacity-80 dark:text-white"
-          href="#"
+        <Link
+          className="flex-none text-xl font-semibold text-black focus:outline-none focus:opacity-80"
+          href="/"
           aria-label="Brand"
         >
           Brand
-        </a>
+        </Link>
         {/* Collapse Button */}
         <button
           type="button"
-          className="hs-collapse-toggle md:hidden relative size-9 flex justify-center items-center font-medium text-[12px] rounded-lg border border-gray-200 text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:border-neutral-700 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
+          className="hs-collapse-toggle md:hidden relative size-9 flex justify-center items-center font-medium text-[12px] rounded-lg border border-gray-200 text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none"
           id="hs-header-base-collapse"
           aria-expanded="false"
           aria-controls="hs-header-base"
@@ -66,12 +68,12 @@ const Navbar = () => {
         className="hidden overflow-hidden transition-all duration-300 hs-collapse basis-full grow md:block "
         aria-labelledby="hs-header-base-collapse"
       >
-        <div className="overflow-hidden overflow-y-auto max-h-[75vh] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500">
+        <div className="overflow-hidden overflow-y-auto max-h-[75vh] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
           <div className="py-2 md:py-0  flex flex-col md:flex-row md:items-center gap-0.5 md:gap-1">
             <div className="grow">
               <div className="flex flex-col md:flex-row  md:items-center gap-0.5 md:gap-1">
                 <a
-                  className="flex items-center p-2 text-sm text-gray-800 bg-gray-100 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:bg-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
+                  className="flex items-center p-2 text-sm text-gray-800 bg-gray-100 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
                   href="#"
                   aria-current="page"
                 >
@@ -97,7 +99,7 @@ const Navbar = () => {
                   <button
                     id="hs-header-base-dropdown"
                     type="button"
-                    className="flex items-center w-full p-2 text-sm text-gray-800 rounded-lg hs-dropdown-toggle hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
+                    className="flex items-center w-full p-2 text-sm text-gray-800 rounded-lg hs-dropdown-toggle hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
                     aria-haspopup="menu"
                     aria-expanded="false"
                     aria-label="Dropdown"
@@ -137,14 +139,14 @@ const Navbar = () => {
                     </svg>
                   </button>
                   <div
-                    className="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 relative w-full md:w-52 hidden z-10 top-full ps-7 md:ps-0 md:bg-white md:rounded-lg md:shadow-md before:absolute before:-top-4 before:start-0 before:w-full before:h-5 md:after:hidden after:absolute after:top-1 after:start-[18px] after:w-0.5 after:h-[calc(100%-0.25rem)] after:bg-gray-100 dark:md:bg-neutral-800 dark:after:bg-neutral-700"
+                    className="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 relative w-full md:w-52 hidden z-10 top-full ps-7 md:ps-0 md:bg-white md:rounded-lg md:shadow-md before:absolute before:-top-4 before:start-0 before:w-full before:h-5 md:after:hidden after:absolute after:top-1 after:start-[18px] after:w-0.5 after:h-[calc(100%-0.25rem)] after:bg-gray-100"
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="hs-header-base-dropdown"
                   >
                     <div className="py-1 md:px-1 space-y-0.5">
                       <a
-                        className="flex items-center p-2 text-sm text-gray-800 rounded-lg md:px-3 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
+                        className="flex items-center p-2 text-sm text-gray-800 rounded-lg md:px-3 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
                         href="#"
                       >
                         About
@@ -153,7 +155,7 @@ const Navbar = () => {
                         <button
                           id="hs-header-base-dropdown-sub"
                           type="button"
-                          className="flex items-center justify-between w-full p-2 text-sm text-gray-800 rounded-lg hs-dropdown-toggle md:px-3 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
+                          className="flex items-center justify-between w-full p-2 text-sm text-gray-800 rounded-lg hs-dropdown-toggle md:px-3 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
                         >
                           Sub Menu
                           <svg
@@ -172,26 +174,26 @@ const Navbar = () => {
                           </svg>
                         </button>
                         <div
-                          className="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 relative md:w-48 hidden z-10 md:mt-2 md:!mx-[10px] md:top-0 md:start-full ps-7 md:ps-0 md:bg-white md:rounded-lg md:shadow-md dark:bg-neutral-800 dark:divide-neutral-700 before:hidden md:before:block before:absolute before:-end-5 before:top-0 before:h-full before:w-5 md:after:hidden after:absolute after:top-1 after:start-[18px] after:w-0.5 after:h-[calc(100%-0.25rem)] after:bg-gray-100 dark:md:bg-neutral-800 dark:after:bg-neutral-700"
+                          className="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 relative md:w-48 hidden z-10 md:mt-2 md:!mx-[10px] md:top-0 md:start-full ps-7 md:ps-0 md:bg-white md:rounded-lg md:shadow-md before:hidden md:before:block before:absolute before:-end-5 before:top-0 before:h-full before:w-5 md:after:hidden after:absolute after:top-1 after:start-[18px] after:w-0.5 after:h-[calc(100%-0.25rem)] after:bg-gray-100"
                           role="menu"
                           aria-orientation="vertical"
                           aria-labelledby="hs-header-base-dropdown-sub"
                         >
                           <div className="p-1 space-y-1">
                             <a
-                              className="flex items-center p-2 text-sm text-gray-800 rounded-lg md:px-3 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
+                              className="flex items-center p-2 text-sm text-gray-800 rounded-lg md:px-3 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
                               href="#"
                             >
                               About
                             </a>
                             <a
-                              className="flex items-center p-2 text-sm text-gray-800 rounded-lg md:px-3 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
+                              className="flex items-center p-2 text-sm text-gray-800 rounded-lg md:px-3 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
                               href="#"
                             >
                               Downloads
                             </a>
                             <a
-                              className="flex items-center p-2 text-sm text-gray-800 rounded-lg md:px-3 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
+                              className="flex items-center p-2 text-sm text-gray-800 rounded-lg md:px-3 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
                               href="#"
                             >
                               Team Account
@@ -200,13 +202,13 @@ const Navbar = () => {
                         </div>
                       </div>
                       <a
-                        className="flex items-center p-2 text-sm text-gray-800 rounded-lg md:px-3 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
+                        className="flex items-center p-2 text-sm text-gray-800 rounded-lg md:px-3 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
                         href="#"
                       >
                         Downloads
                       </a>
                       <a
-                        className="flex items-center p-2 text-sm text-gray-800 rounded-lg md:px-3 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
+                        className="flex items-center p-2 text-sm text-gray-800 rounded-lg md:px-3 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
                         href="#"
                       >
                         Team Account
@@ -216,7 +218,7 @@ const Navbar = () => {
                 </div>
                 {/* End Dropdown */}
                 <a
-                  className="flex items-center p-2 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
+                  className="flex items-center p-2 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
                   href="#"
                 >
                   <svg
@@ -237,7 +239,7 @@ const Navbar = () => {
                   Account
                 </a>
                 <a
-                  className="flex items-center p-2 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
+                  className="flex items-center p-2 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
                   href="#"
                 >
                   <svg
@@ -260,7 +262,7 @@ const Navbar = () => {
                   Work
                 </a>
                 <a
-                  className="flex items-center p-2 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
+                  className="flex items-center p-2 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
                   href="#"
                 >
                   <svg
@@ -286,18 +288,18 @@ const Navbar = () => {
             </div>
             {/* Button Group */}
             <div className="md:ms-auto mt-2 md:mt-0 flex flex-wrap items-center gap-x-1.5">
-              <a
-                className="py-[7px] px-2.5 inline-flex items-center font-medium text-sm rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 focus:outline-none focus:bg-gray-100 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
-                href="#"
+              <Link
+                className="py-[7px] px-2.5 inline-flex items-center font-medium text-sm rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-100"
+                href="/login"
               >
                 Sign in
-              </a>
-              <a
-                className="py-2 px-2.5 inline-flex items-center font-medium text-sm rounded-lg bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:bg-blue-600"
-                href="#"
+              </Link>
+              <Link
+                className="py-2 px-2.5 inline-flex items-center font-medium text-sm rounded-lg bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                href="/signup"
               >
                 Get started
-              </a>
+              </Link>
             </div>
             {/* End Button Group */}
           </div>
