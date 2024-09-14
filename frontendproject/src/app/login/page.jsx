@@ -1,8 +1,33 @@
 'use client';
+import { useFormik } from 'formik';
 import Link from 'next/link';
 import React from 'react'
 
+const LoginSchema = Yup.object().shape({
+  email: Yup.string().email('Invalid email').required('Required'),
+  password: Yup.string().required('Required')
+  .min(8, 'Password must be 8 characters long')
+  .matches(/[a-z]/, 'must include lower case')
+  .matches(/[A-Z]/, 'must include upper case')
+  .matches(/[0-9]/, 'must contain a number')
+  .matches(/\W/, "Must contain special characters")
+})
+
 const Login = () => {
+
+  const loginForm = useFormik({
+    initialValues: {
+      email: '',
+      password: ''
+    },
+
+    onSubmit: (values) => {
+      console.log(values);
+    },
+
+    validationSchema: LoginSchema
+  })
+
   return (
     <div className='flex items-center justify-center h-[96vh] mt-0'>
         <div className='w-[25%] h-[55%] justify-center items-center'>
@@ -29,7 +54,7 @@ const Login = () => {
               
             </div>
             
-            <div className='flex flex-col items-center justify-center h-[55%]'>
+            <form className='flex flex-col items-center justify-center h-[55%]'>
 
               <label htmlFor="email" className='self-start my-2 font-bold px-11 text-cyan-700'>Email</label>
               <input id='email' type="text" className='h-[50px] w-[79%] px-4 border border-cyan-700 rounded-lg' placeholder='Enter Email Address'/>
@@ -40,7 +65,7 @@ const Login = () => {
               <button className='text-white bg-cyan-700 h-[50px] w-[79%] px-4 my-6 font-bold rounded-lg hover:bg-cyan-500'>Log In</button>
               
               <h1 className='font-bold text-md'>Don't have an Account? <Link className='text-blue-600' href="/signup">Sign Up</Link></h1>
-            </div>
+            </form>
         </div>
         <div className='lg:w-[75%] justify-center items-center md:w-[50%]'>
           <img src="blog1.jpg" alt="blog-login-image" className='hidden md:flex' />
