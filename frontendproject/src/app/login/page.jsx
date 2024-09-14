@@ -10,29 +10,35 @@ const Login = () => {
         <div className='w-[25%] h-[50%] justify-center items-center'>
             <div className='flex flex-col items-center justify-center h-[25%]'>
               
-                <h1 className='m-2 text-xl font-bold'>Log in with</h1>
+                <h1 className='my-4 text-xl font-bold text-cyan-700'>Log in with</h1>
                 
                 <div className='grid grid-cols-2 gap-6'>
-                    <button className='flex gap-2 px-8 py-4 bg-gray-100'><img src="google.png" alt="google-logo" className='h-[20px] w-[20px]'/>Google</button>
-                    <button className='flex gap-2 px-8 py-4 bg-gray-100'><img src="facebook.png" alt="facebook-logo" className='h-[20px] w-[20px]' />Microsoft</button>
+                    <button className='flex px-8 py-4 font-bold border rounded-lg border-cyan-700'>
+                      <img src="google.png" alt="google-logo" className='h-[20px] w-[20px] mr-2'/>
+                      <span className="text-red-600">G</span>
+                      <span className="text-yellow-500">oo</span>
+                      <span className="text-green-600">gl</span>
+                      <span className="text-blue-600">e</span>
+                    </button>
+                    <button className='flex px-8 py-4 font-bold border rounded-lg border-cyan-700'><img src="facebook.png" alt="facebook-logo" className='h-[20px] w-[20px] mr-2' /><span className='text-blue-500'>Facebook</span></button>
                 </div>
     
             </div>
 
-            <div className='flex items-center justify-center p-4 h-[5%]'>
+            <div className='flex items-center justify-center h-[5%] mt-3'>
               
-              <h1 className=''>OR</h1>
+              <h1 className='font-bold text-cyan-700'>OR</h1>
               
             </div>
             
             <div className='flex flex-col items-center justify-center h-[65%]'>
 
-              <label htmlFor="email" className='self-start my-2 px-11'>Email</label>
-              <input id='email' type="text" className='bg-gray-200 h-[50px] w-[79%] px-4' placeholder='Enter Email Address'/>
+              <label htmlFor="email" className='self-start my-2 font-bold px-11 text-cyan-700'>Email</label>
+              <input id='email' type="text" className='h-[50px] w-[79%] px-4 border border-cyan-700 rounded-lg' placeholder='Enter Email Address'/>
 
-              <label htmlFor="password" className='self-start my-2 px-11'>Password</label>
-              <input id='password' type="text" className='bg-gray-200 h-[50px] w-[79%] px-4' placeholder='Enter your Password'/>
-              <button className='text-white bg-black h-[50px] w-[79%] px-4 my-6'>Log In</button>
+              <label htmlFor="password" className='self-start my-2 font-bold px-11 text-cyan-700'>Password</label>
+              <input id='password' type="text" className='h-[50px] w-[79%] px-4 border border-cyan-700 rounded-lg' placeholder='Enter your Password'/>
+              <button className='text-white bg-cyan-700 h-[50px] w-[79%] px-4 my-6 font-bold rounded-lg hover:bg-cyan-500'>Log In</button>
             </div>
         </div>
     </div>
