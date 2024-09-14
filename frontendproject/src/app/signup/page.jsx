@@ -1,7 +1,58 @@
 'use client';
+import axios from 'axios';
+import { useFormik } from 'formik';
+import Link from 'next/link';
 import React from 'react'
+import toast from 'react-hot-toast';
+import * as Yup from 'yup';
+
+const SignupSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, 'Make it long')
+    .max(50, 'Too Long!')
+    .required('Name is Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
+  password: Yup.string()
+  .min(8, 'Password must be 8 characters long')
+  .matches(/[a-z]/, 'must include lower case')
+  .matches(/[A-Z]/, 'must include upper case')
+  .matches(/[0-9]/, 'must contain a number')
+  .matches(/\W/, "Must contain special characters")
+  .required('Required'),
+  confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match')
+});
 
 const SignUp = () => {
+
+  const signupForm = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+      confirmPassword: ''
+    },
+
+    onSubmit: (values, {resetForm, setSubmitting}) => {
+      console.log(values);
+      axios.post('http://localhost:5000/user/add', values)
+      .then((response) => {
+        
+        console.log(response.status);
+        resetForm();
+        toast.success('User Registered Successfully!');
+        
+      }).catch((err) => {
+        
+        console.log(err);
+        console.log(err.response?.data);
+        setSubmitting(false);
+        toast.error(err?.response?.data?.message);
+        
+      });
+    },
+    
+    validationSchema: SignupSchema
+  });
+  
   return (
   <div className='flex items-center justify-center h-[96vh] mt-0'>
     <div className='lg:w-[25%] justify-center items-center md:w-[50%] -rotate-90'>
@@ -46,7 +97,7 @@ const SignUp = () => {
           
           <button className='text-white bg-cyan-700 h-[50px] w-[79%] px-4 my-6 font-bold rounded-lg hover:bg-cyan-500'>Sign Up</button>
 
-          <h1 className='font-bold text-md'>Have an Account? <a className='text-blue-600' href="/signup">Log In</a></h1>
+          <h1 className='font-bold text-md'>Have an Account? <Link className='text-blue-600' href="/signup">Log In</Link></h1>
         </div>
         </div>
     </div>
