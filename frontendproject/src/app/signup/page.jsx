@@ -50,7 +50,7 @@ const SignUp = () => {
       <div className='lg:w-[25%] justify-center items-center md:w-[50%] -rotate-90'>
         <img src="blog3.png" alt="blog-signup-image" className='hidden md:flex' />
       </div>
-      <div className='w-[75%] h-[60%] justify-center items-center'>
+      <div className='w-[75%] h-[65%] justify-center items-center'>
         <div className='w-[35%]'>
           <div className='flex flex-col items-center justify-start h-[25%]'>
             <h1 className='my-4 text-xl font-bold text-cyan-700'>Create your Account</h1>
