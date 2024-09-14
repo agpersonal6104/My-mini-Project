@@ -33,7 +33,7 @@ const SignUp = () => {
 
     onSubmit: (values, {resetForm, setSubmitting}) => {
       console.log(values);
-      axios.post('http://localhost:5000/user/add', values)
+      axios.post('http://localhost:6000/user/add', values)
       .then((response) => {
         
         console.log(response.status);
@@ -84,21 +84,62 @@ const SignUp = () => {
           
         </div>
         
-        <div className='flex flex-col items-center justify-center h-[65%]'>
+        <form
+        className='flex flex-col items-center justify-center h-[65%]'
+        onSubmit={signupForm.handleSubmit}>
 
           <label htmlFor="email" className='self-start my-2 font-bold px-11 text-cyan-700'>Email</label>
-          <input id='email' type="text" className='h-[50px] w-[79%] px-4 border border-cyan-700 rounded-lg' placeholder='Enter Email Address'/>
+          <input
+          id='email'
+          type="text"
+          onChange={signupForm.handleChange}
+          value={signupForm.values.email}
+          className='h-[50px] w-[79%] px-4 border border-cyan-700 rounded-lg' placeholder='Enter Email Address'
+          aria-describedby='email-error'/>
+          {
+                    signupForm.touched.email && (
+                      <p className="mt-2 text-xs text-red-600" id="email-error">
+                        {signupForm.errors.email}
+                      </p>
+                    )
+          }
 
           <label htmlFor="password" className='self-start my-2 font-bold px-11 text-cyan-700'>Password</label>
-          <input id='password' type="text" className='h-[50px] w-[79%] px-4 border border-cyan-700 rounded-lg' placeholder='Enter your Password'/>
+          <input
+          id='password'
+          type="text"
+          onChange={signupForm.handleChange}
+          value={signupForm.values.password}
+          className='h-[50px] w-[79%] px-4 border border-cyan-700 rounded-lg' placeholder='Enter your Password'
+          aria-describedby='password-error'/>
+          {
+                    signupForm.touched.password && (
+                      <p className="mt-2 text-xs text-red-600" id="password-error">
+                        {signupForm.errors.password}
+                      </p>
+                    )
+          }
 
           <label htmlFor="confirmPassword" className='self-start my-2 font-bold px-11 text-cyan-700'>Confirm Password</label>
-          <input id='password' type="text" className='h-[50px] w-[79%] px-4 border border-cyan-700 rounded-lg' placeholder='Confirm your Password'/>
+          <input
+          id='password'
+          type="text"
+          onChange={signupForm.handleChange}
+          value={signupForm.values.confirmPassword}
+          className='h-[50px] w-[79%] px-4 border border-cyan-700 rounded-lg' placeholder='Confirm your Password'
+          aria-describedby='confirm-password-error'/>
+          {
+                    signupForm.touched.confirmPassword && (
+                      <p className="mt-2 text-xs text-red-600" id="confirm-password-error">
+                        {signupForm.errors.confirmPassword}
+                      </p>
+                    )
+          }
           
           <button className='text-white bg-cyan-700 h-[50px] w-[79%] px-4 my-6 font-bold rounded-lg hover:bg-cyan-500'>Sign Up</button>
 
-          <h1 className='font-bold text-md'>Have an Account? <Link className='text-blue-600' href="/signup">Log In</Link></h1>
-        </div>
+          <h1 className='font-bold text-md'>Have an Account? <Link className='text-blue-600' href="/login">Log In</Link></h1>
+        </form>
         </div>
     </div>
   </div>

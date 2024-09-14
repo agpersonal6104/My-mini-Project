@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import React from 'react'
 
 const Login = () => {
@@ -38,7 +39,7 @@ const Login = () => {
               
               <button className='text-white bg-cyan-700 h-[50px] w-[79%] px-4 my-6 font-bold rounded-lg hover:bg-cyan-500'>Log In</button>
               
-              <h1 className='font-bold text-md'>Don't have an Account? <a className='text-blue-600' href="/signup">Sign Up</a></h1>
+              <h1 className='font-bold text-md'>Don't have an Account? <Link className='text-blue-600' href="/signup">Sign Up</Link></h1>
             </div>
         </div>
         <div className='lg:w-[75%] justify-center items-center md:w-[50%]'>
