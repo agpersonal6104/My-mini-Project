@@ -6,7 +6,7 @@ const mySchema = new Schema({
         required: true
     },
     description: {
-        type:String,
+        type: String,
         required: true
     },
     author: {
@@ -17,5 +17,12 @@ const mySchema = new Schema({
         type: String,
         required: true
     },
-    createdAt: Date.now()
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+    image: {
+        type: Buffer,
+        contentType: String
+    }
 });
