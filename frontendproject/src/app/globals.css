@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#backgroundHome{
+    background-image: url('https://kabir.org/wp-content/uploads/2021/12/blogging-money-1-1500x500.jpeg');
+    object-fit: cover;
+}
