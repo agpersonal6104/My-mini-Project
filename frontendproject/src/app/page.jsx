@@ -19,6 +19,11 @@ const Home = () => {
           <p className='text-2xl font-bold'>Get the <span className='italic text-purple-600'>{typeEffect}</span></p>
         </div>
       </header>
+      <main className='h-[64%] '>
+        <div>
+          
+        </div>
+      </main>
     </div>
   )
 }
