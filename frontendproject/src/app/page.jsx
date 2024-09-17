@@ -19,7 +19,7 @@ const Home = () => {
           <p className='text-2xl font-bold'>Get the <span className='italic text-purple-600'>{typeEffect}</span></p>
         </div>
       </header>
-      <main className='h-[64%] '>
+      <main className='h-[64%] bg-gray-500 flex flex-col items-center justify-center'>
         <div>
           
         </div>
