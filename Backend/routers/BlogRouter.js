@@ -5,18 +5,21 @@ const mongoose = require('mongoose');
 const blogModel = require('../models/blogModel'); // Import the updated blog model
 
 // Create a new blog post
-router.post('/blog', async (req, res) => {
-    try {
-        const blogPost = new blogModel(req.body);
-        await blogPost.save();
-        res.status(201).send(blogPost);
-    } catch (err) {
-        res.status(400).send(err);
-    }
+router.post('/add', async (req, res) => {
+
+    console.log(req.body);
+    
+    new blogModel(req.body).save()
+    .then((result) => {
+        res.status(200).json(result);
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
 // Get all blog posts
-router.get('/blog', async (req, res) => {
+router.get('/getall', async (req, res) => {
     try {
         const blogPosts = await blogModel.find().exec();
         res.send(blogPosts);
@@ -26,7 +29,7 @@ router.get('/blog', async (req, res) => {
 });
 
 // Get a single blog post by ID
-router.get('/blog/:id', async (req, res) => {
+router.get('/get/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const blogPost = await blogModel.findById(id).exec();
@@ -40,7 +43,7 @@ router.get('/blog/:id', async (req, res) => {
 });
 
 // Update a blog post
-router.put('/blog/:id', async (req, res) => {
+router.put('/update/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const blogPost = await blogModel.findByIdAndUpdate(id, req.body, { new: true });
@@ -54,7 +57,7 @@ router.put('/blog/:id', async (req, res) => {
 });
 
 // Delete a blog post
-router.delete('/blog/:id', async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
     try {
         const id = req.params.id;
         await blogModel.findByIdAndRemove(id).exec();
@@ -65,7 +68,7 @@ router.delete('/blog/:id', async (req, res) => {
 });
 
 // Handle image upload
-router.post('/blog/image', async (req, res) => {
+router.post('/image', async (req, res) => {
     try {
         const image = req.body.image;
         const blogPost = await blogModel.findByIdAndUpdate(req.body.id, { image }, { new: true });
