@@ -8,7 +8,7 @@ const ContactUs = () => {
   <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
     <div className="max-w-2xl mx-auto lg:max-w-5xl">
       <div className="text-center">
-        <h1 className="text-3xl font-bold text-gray-800 sm:text-4xl dark:text-white">
+        <h1 className="text-3xl font-bold text-gray-800 sm:text-4xl">
           Contact us
         </h1>
         <p className="mt-1 text-gray-600 dark:text-neutral-400">
@@ -17,8 +17,8 @@ const ContactUs = () => {
       </div>
       <div className="grid items-center gap-6 mt-12 lg:grid-cols-2 lg:gap-16">
         {/* Card */}
-        <div className="flex flex-col p-4 border rounded-xl sm:p-6 lg:p-8 dark:border-neutral-700">
-          <h2 className="mb-8 text-xl font-semibold text-gray-800 dark:text-neutral-200">
+        <div className="flex flex-col p-4 border rounded-xl sm:p-6 lg:p-8">
+          <h2 className="mb-8 text-xl font-semibold text-gray-800">
             Fill in the form
           </h2>
           <form>
@@ -33,7 +33,7 @@ const ContactUs = () => {
                     type="text"
                     name="hs-firstname-contacts-1"
                     id="hs-firstname-contacts-1"
-                    className="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                    className="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
                     placeholder="First Name"
                   />
                 </div>
@@ -45,7 +45,7 @@ const ContactUs = () => {
                     type="text"
                     name="hs-lastname-contacts-1"
                     id="hs-lastname-contacts-1"
-                    className="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                    className="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
                     placeholder="Last Name"
                   />
                 </div>
@@ -60,7 +60,7 @@ const ContactUs = () => {
                   name="hs-email-contacts-1"
                   id="hs-email-contacts-1"
                   autoComplete="email"
-                  className="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                  className="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
                   placeholder="Email"
                 />
               </div>
@@ -72,7 +72,7 @@ const ContactUs = () => {
                   type="text"
                   name="hs-phone-number-1"
                   id="hs-phone-number-1"
-                  className="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                  className="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
                   placeholder="Phone Number"
                 />
               </div>
@@ -84,7 +84,7 @@ const ContactUs = () => {
                   id="hs-about-contacts-1"
                   name="hs-about-contacts-1"
                   rows={4}
-                  className="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                  className="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
                   placeholder="Details"
                   defaultValue={""}
                 />
@@ -107,11 +107,11 @@ const ContactUs = () => {
           </form>
         </div>
         {/* End Card */}
-        <div className="divide-y divide-gray-200 dark:divide-neutral-800">
+        <div className="divide-y divide-gray-200">
           {/* Icon Block */}
           <div className="flex py-6 gap-x-7">
             <svg
-              className="shrink-0 size-6 mt-1.5 text-gray-800 dark:text-neutral-200"
+              className="shrink-0 size-6 mt-1.5 text-gray-800"
               xmlns="http://www.w3.org/2000/svg"
               width={24}
               height={24}
@@ -127,14 +127,14 @@ const ContactUs = () => {
               <path d="M12 17h.01" />
             </svg>
             <div className="grow">
-              <h3 className="font-semibold text-gray-800 dark:text-neutral-200">
+              <h3 className="font-semibold text-gray-800">
                 Knowledgebase
               </h3>
-              <p className="mt-1 text-sm text-gray-500 dark:text-neutral-500">
+              <p className="mt-1 text-sm text-gray-500">
                 We're here to help with any questions or code.
               </p>
               <a
-                className="inline-flex items-center mt-2 text-sm font-medium text-gray-600 gap-x-2 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200"
+                className="inline-flex items-center mt-2 text-sm font-medium text-gray-600 gap-x-2 hover:text-gray-800 focus:outline-none focus:text-gray-800"
                 href="#"
               >
                 Contact support
@@ -182,7 +182,7 @@ const ContactUs = () => {
                 Search our FAQ for answers to anything you might ask.
               </p>
               <a
-                className="inline-flex items-center mt-2 text-sm font-medium text-gray-600 gap-x-2 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200"
+                className="inline-flex items-center mt-2 text-sm font-medium text-gray-600 gap-x-2 hover:text-gray-800 focus:outline-none focus:text-gray-800"
                 href="#"
               >
                 Visit FAQ
@@ -208,7 +208,7 @@ const ContactUs = () => {
           {/* Icon Block */}
           <div className="flex py-6 gap-x-7">
             <svg
-              className="shrink-0 size-6 mt-1.5 text-gray-800 dark:text-neutral-200"
+              className="shrink-0 size-6 mt-1.5 text-gray-800"
               xmlns="http://www.w3.org/2000/svg"
               width={24}
               height={24}
@@ -224,14 +224,14 @@ const ContactUs = () => {
               <rect width={18} height={18} x={3} y={3} rx={2} ry={2} />
             </svg>
             <div className="grow">
-              <h3 className="font-semibold text-gray-800 dark:text-neutral-200">
+              <h3 className="font-semibold text-gray-800">
                 Developer APIs
               </h3>
-              <p className="mt-1 text-sm text-gray-500 dark:text-neutral-500">
+              <p className="mt-1 text-sm text-gray-500">
                 Check out our development quickstart guide.
               </p>
               <a
-                className="inline-flex items-center mt-2 text-sm font-medium text-gray-600 gap-x-2 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200"
+                className="inline-flex items-center mt-2 text-sm font-medium text-gray-600 gap-x-2 hover:text-gray-800 focus:outline-none focus:text-gray-800"
                 href="#"
               >
                 Contact sales
@@ -257,7 +257,7 @@ const ContactUs = () => {
           {/* Icon Block */}
           <div className="flex py-6 gap-x-7">
             <svg
-              className="shrink-0 size-6 mt-1.5 text-gray-800 dark:text-neutral-200"
+              className="shrink-0 size-6 mt-1.5 text-gray-800"
               xmlns="http://www.w3.org/2000/svg"
               width={24}
               height={24}
@@ -272,14 +272,14 @@ const ContactUs = () => {
               <path d="m22 10-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 10" />
             </svg>
             <div className="grow">
-              <h3 className="font-semibold text-gray-800 dark:text-neutral-200">
+              <h3 className="font-semibold text-gray-800">
                 Contact us by email
               </h3>
-              <p className="mt-1 text-sm text-gray-500 dark:text-neutral-500">
+              <p className="mt-1 text-sm text-gray-500">
                 If you wish to write us an email instead please use
               </p>
               <a
-                className="inline-flex items-center mt-2 text-sm font-medium text-gray-600 gap-x-2 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200"
+                className="inline-flex items-center mt-2 text-sm font-medium text-gray-600 gap-x-2 hover:text-gray-800 focus:outline-none focus:text-gray-800"
                 href="#"
               >
                 example@site.com
