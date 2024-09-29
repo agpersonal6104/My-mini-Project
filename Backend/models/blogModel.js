@@ -24,10 +24,6 @@ const mySchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    publishedBy: {
-        type: String,
-        required: true
-    },
     createdAt: {
         type: Date,
         default: Date.now
