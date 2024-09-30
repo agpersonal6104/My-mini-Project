@@ -1,5 +1,5 @@
 const CreateBlog = () => {
-  const [imageUrl, setImageUrl] = useState('');
+  const [imageUrl, setImageUrl] = useState(''); // Initialize with an empty string
 
   const handleUpload = (e) => {
     const file = e.target.files[0];
@@ -25,7 +25,7 @@ const CreateBlog = () => {
   const createBlogForm = useFormik({
     initialValues: {
       title: '',
-      image: '', // Initialize with an empty string
+      image: imageUrl, // Initialize with the current image URL
       description: '',
       author: ''
     },
@@ -71,11 +71,12 @@ const CreateBlog = () => {
             {...createBlogForm.getFieldProps('description')} // Connect the input to the formik field
           />
 
-          <input
+          {/* Remove the hidden input field, as it's not needed */}
+          {/* <input
             type="hidden"
             value={imageUrl}
             {...createBlogForm.getFieldProps('image')} // Connect the image URL to the formik field
-          />
+          /> */}
 
           <button type="submit">Create Blog Post</button>
         </form>
