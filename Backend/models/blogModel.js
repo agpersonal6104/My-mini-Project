@@ -10,13 +10,17 @@ const mySchema = new mongoose.Schema({
         required: false,
         validate: {
             validator: (v) => {
-                const urlRegex = ;
+                const urlRegex = /^https?:\/\/[^\s]+$/;
                 return urlRegex.test(v);
             },
             message: '{VALUE} is not a valid URL'
         }
     },
     description: {
+        type: String,
+        required: true
+    },
+    content: { // added content field for blog post content
         type: String,
         required: true
     },

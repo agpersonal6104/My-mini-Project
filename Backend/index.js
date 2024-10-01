@@ -4,7 +4,7 @@ const UserRouter = require('../Backend/routers/UserRouter');
 const BlogRouter = require('../Backend/routers/BlogRouter');
 const cors = require('cors');
 
-const app=express();
+const app = express();
 
 const port = 6000;
 
@@ -12,27 +12,28 @@ app.use(cors({
     origin: 'http://localhost:3000'
 }));
 
-// User middleware
+// Middleware
 app.use(express.json());
-app.use('/user',UserRouter);
+
+// User middleware
+app.use('/user', UserRouter);
 
 // Blog middleware
-app.use(express.json());
-app.use('/blog',BlogRouter);
+app.use('/blog', BlogRouter);
 
-app.get('/', (req,res) => {
+app.get('/', (req, res) => {
     res.send('Welcome to my project');
 });
 
-app.get('/getall', (req,res) => {
-    res.send('All the conntent');
+app.get('/getall', (req, res) => {
+    res.send('All the content');
 });
 
-app.post('/add', (req,res) => {
+app.post('/add', (req, res) => {
     res.send('Addition of content');
 });
 
-app.put('/update/:id', (req,res) => {
+app.put('/update/:id', (req, res) => {
     res.send('Update of content');
 });
 
