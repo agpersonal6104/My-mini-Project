@@ -2,7 +2,7 @@ const express = require('express');
 const Model = require('../models/userModel');
 
 const jwt = require('jsonwebtoken');
-const verifyToken = require('./verifyToken');
+const verifyToken = require('./verifyTokens');
 require('dotenv').config();
 
 const router = express.Router();
@@ -14,11 +14,19 @@ router.post('/add', (req,res) => {
     .then((result) => {
        res.status(200).json(result); 
     }).catch((err) => {
-        res.status(500).json(err);
+        console.log(err);
+        if(err.ode === 11000)
+        {
+            res.status(500).json({message: 'Email already exists!'})
+        }
+        else
+        {
+            res.status(500).json({message : 'Something went wrong!'});
+        }
     });
 });
 
-router.get('/getall', (req,res) => {
+router.get('/getall',verifyToken, (req,res) => {
     Model.find()
     .then((result) => {
         res.status(200).json(result);

@@ -2,6 +2,7 @@
 import { useFormik } from 'formik';
 import Link from 'next/link';
 import React from 'react'
+import * as Yup from 'yup';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -68,7 +69,7 @@ const Login = () => {
               placeholder='Enter Email Address'
               aria-describedby='email-error'/>
               {
-                signupForm.touched.email && (
+                loginForm.touched.email && (
                   <p className="text-xs text-red-600" id="email-error">
                     {signupForm.errors.email}
                   </p>
@@ -84,7 +85,7 @@ const Login = () => {
               placeholder='Enter your Password'
               aria-describedby='password-error'/>
               {
-                signupForm.touched.password && (
+                loginForm.touched.password && (
                   <p className="text-xs text-red-600" id="password-error">
                     {signupForm.errors.password}
                   </p>
