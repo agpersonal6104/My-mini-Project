@@ -144,7 +144,10 @@ const SignUp = () => {
               )
             }
 
-            <button className='text-white bg-cyan-700 h-[50px] w-[79%] px-4 my-6 font-bold rounded-lg hover:bg-cyan-500'>Sign Up</button>
+            <button
+            type="submit"
+            disabled={ signupForm.isSubmitting }
+            className='text-white bg-cyan-700 h-[50px] w-[79%] px-4 my-6 font-bold rounded-lg hover:bg-cyan-500'>Sign Up</button>
 
             <h1 className='font-bold text-md'>Have an Account? <Link className='text-blue-600' href="/login">Log In</Link></h1>
           </form>
