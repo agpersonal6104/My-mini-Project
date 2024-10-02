@@ -16,9 +16,11 @@ app.use(cors({
 app.use(express.json());
 
 // User middleware
+app.use(express.json());
 app.use('/user', UserRouter);
 
 // Blog middleware
+app.use(express.json());
 app.use('/blog', BlogRouter);
 
 app.get('/', (req, res) => {

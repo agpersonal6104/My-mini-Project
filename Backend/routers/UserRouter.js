@@ -12,58 +12,110 @@ router.post('/add', (req,res) => {
     
     new Model(req.body).save()
     .then((result) => {
-       res.status(200).json(result); 
+
+        res.status(200).json(result);
+
     }).catch((err) => {
+
         console.log(err);
         if(err.ode === 11000)
         {
             res.status(500).json({message: 'Email already exists!'})
         }
-        else
-        {
+        else{
             res.status(500).json({message : 'Something went wrong!'});
         }
+        
     });
 });
 
-router.get('/getall',verifyToken, (req,res) => {
+// getall
+router.get('/getall', verifyToken, (req, res) => {
     Model.find()
     .then((result) => {
         res.status(200).json(result);
     }).catch((err) => {
-        res.status(500).json({
-            message : 'Something went Wrong!'
-        });
+        console.log(err);
+        res.status(500).json({ message: 'Something went wrong!' });
     });
 });
 
+// Get by city
+router.get('/getbycity/:city', (req,res) => {
+
+    Model.find({city : req.params.city})
+    .then((result) => {
+
+        res.status(200).json(result);
+
+    })
+    .catch((err) => {
+
+        console.log(err);
+        res.status(500).json(err);
+
+    });
+});
+
+// Get by Email
+router.get('/getbyemail/:email', (req,res) => {
+
+    Model.findOne({email : req.params.email})
+    .then((result) => {
+
+        res.status(200).json(result);
+
+    })
+    .catch((err) => {
+
+        console.log(err);
+        res.status(500).json(err);
+
+    });
+
+});
+
+// getbyid
+// ':' denotes URL parameter
 router.get('/getbyid/:id', (req,res) => {
+    
     Model.findById(req.params.id)
     .then((result) => {
         res.status(200).json(result);
-    }).catch((err) => {
+    })
+    .catch((err) => {
         console.log(err);
         res.status(500).json(err);
     });
 });
 
-router.put('/update/:id', (req,res) => {
-    Model.findByIdAndUpdate(req.params.id, req.body, {new : true})
+// update
+router.put('/update/:id',(req,res) => {
+    Model.findByIdAndUpdate(req.params.id, req.body,{new : true})
     .then((result) => {
         res.status(200).json(result);
-    }).catch((err) => {
+    })
+    .catch((err) => {
         console.log(err);
         res.status(500).json(err);
     });
 });
 
-router.delete('/delete/:id', (req,res) => {
-    Model.findByIdAndRemove(req.params.id)
+// delete
+
+router.delete('/delete/:id',(req, res) => {
+
+    Model.findByIdAndDelete(req.params.id)
     .then((result) => {
+
         res.status(200).json(result);
-    }).catch((err) => {
+
+    })
+    .catch((err) => {
+
         console.log(err);
         res.status(500).json(err);
+
     });
 });
 
@@ -99,6 +151,11 @@ router.post('/authenticate', (req,res) => {
     }).catch((err) => {
         
     });
-});
+})
+
+// npm init -y
+// npm i express
+// npm i nodemon
+// add dev script
 
 module.exports = router;

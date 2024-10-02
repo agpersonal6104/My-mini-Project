@@ -129,7 +129,7 @@ const SignUp = () => {
             <label htmlFor="confirmPassword" className='self-start my-2 font-bold px-11 text-cyan-700'>Confirm Password</label>
             <input
               id='confirmPassword'
-              type="text"
+              type="password"
               onChange={signupForm.handleChange}
               value={signupForm.values.confirmPassword}
               className='h-[50px] w-[79%] px-4 border border-cyan-700 rounded-lg'
@@ -145,9 +145,12 @@ const SignUp = () => {
             }
 
             <button
-            type="submit"
-            disabled={ signupForm.isSubmitting }
-            className='text-white bg-cyan-700 h-[50px] w-[79%] px-4 my-6 font-bold rounded-lg hover:bg-cyan-500'>Sign Up</button>
+              type="submit"
+              disabled={signupForm.isSubmitting || !signupForm.isValid} // prevent submission when form is invalid
+              className='text-white bg-cyan-700 h-[50px] w-[79%] px-4 my-6 font-bold rounded-lg hover:bg-cyan-500'
+            >
+            Sign Up
+            </button>
 
             <h1 className='font-bold text-md'>Have an Account? <Link className='text-blue-600' href="/login">Log In</Link></h1>
           </form>
