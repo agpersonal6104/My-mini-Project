@@ -12,9 +12,6 @@ app.use(cors({
     origin: 'http://localhost:3000'
 }));
 
-// Middleware
-app.use(express.json());
-
 // User middleware
 app.use(express.json());
 app.use('/user', UserRouter);
@@ -40,5 +37,5 @@ app.put('/update/:id', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+    console.log(`Server is running`);
 });
