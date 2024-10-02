@@ -22,7 +22,9 @@ const Home = () => {
       <main className='h-[64%] flex flex-col items-center justify-center w-full'>
         <div>
           <h1 className='text-3xl font-bold'>LATEST POSTS</h1>
-          <div className='grid grid-cols-4'></div>
+          <div className='grid grid-cols-4'>
+            {}
+          </div>
         </div>
       </main>
       <>
