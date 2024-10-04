@@ -34,16 +34,22 @@ const ViewBlog = () => {
     }
     else
     {
-      <div className='flex items-center justify-center h-[90vh]'>
+      return(
+        <div className='flex items-center justify-center h-[90vh]'>
         <div className='flex flex-col w-1/2 border-2 border-black rounded-lg shadow-lg h-[60%]'>
             <div className='h-[40%]'>
-              <img src="" alt="" />
+              <img src={blogData.imageUrl} alt={blogData.title} />
             </div>
             <div className='h-[60%]'>
               <h1>{blogData.title}</h1>
+              <p>{blogData.description}</p>
+              <p>{blogData.content}</p>
+              <p>{blogData.author}</p>
+              <p>Published on: {blogData.createdAt}</p>
             </div>
         </div>
       </div>
+      );
     }
 }
 
