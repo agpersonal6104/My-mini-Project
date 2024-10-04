@@ -20,7 +20,9 @@ const Home = () => {
       const res = await axios.get('http://localhost:6000/user/getall');
       console.log(res.status);
       setBlogList(res.data);
-    } catch (error) {
+    }
+    catch(error)
+    {
       setError(error.message);
     }
   }
