@@ -9,7 +9,7 @@ const Navbar = () => {
   console.log(path);
   
   return (
-    <>
+    <div className='h-[7vh]'>
   {/* ========== HEADER ========== */}
   <header className="z-50 flex flex-wrap w-full py-3 text-sm bg-blue-600 sm:justify-start sm:flex-nowrap sm:py-0">
     <nav
@@ -213,7 +213,7 @@ const Navbar = () => {
     </div>
   </main>
   {/* ========== END MAIN CONTENT ========== */}
-</>
+</div>
 
   )
 }
