@@ -2,33 +2,49 @@
 import axios from 'axios';
 import { useParams } from 'next/navigation';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const ViewBlog = () => {
 
     const {id} = useParams();
 
-    const [blogdata, setBlogdata] = useState(null);
+    const [blogData, setBlogData] = useState(null);
 
     const router = useRouter();
 
     const getBlogData = async () => {
-        const res = await axios.get('http://localhost:6000/blog/getbyid/' +id);
-        console.log(res.data);
-        setBlogData(res.data);
+        try {
+          const res = await axios.get('http://localhost:6000/blog/getbyid/' +id);
+          console.log(res.data);
+          setBlogData(res.data);
+        }
+        catch (error)
+        {
+          console.error(error);
+        }
     }
 
     useEffect(() => {
         getBlogData();
     }, []);
-
-  return (
-    <div className='h-[100vh]'>
-      <div>
-        
+    
+    if(!blogData)
+    {
+      return <div>Loading.....</div>
+    }
+    else
+    {
+      <div className='flex items-center justify-center h-[90vh]'>
+        <div className='flex flex-col w-1/2 border-2 border-black rounded-lg shadow-lg h-[60%]'>
+            <div className='h-[40%]'>
+              <img src="" alt="" />
+            </div>
+            <div className='h-[60%]'>
+              <h1>{blogData.title}</h1>
+            </div>
+        </div>
       </div>
-    </div>
-  )
+    }
 }
 
 export default ViewBlog;

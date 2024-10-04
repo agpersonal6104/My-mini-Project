@@ -1,5 +1,5 @@
 'use client';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTypewriter } from 'react-simple-typewriter';
 
 const Home = () => {
@@ -10,6 +10,31 @@ const Home = () => {
     typeSpeed: 120,
     deleteSpeed: 40
   })
+
+  const [blogList, setBlogList] = useState([]);
+
+  const fetchBlogData = async ()=> {
+    const res = await axios.get('http://localhost:6000/user/getall');
+    console.log(res.status);
+    setBlogList(res.data);
+  }
+
+  useEffect(()=> {
+    fetchBlogData();
+  });
+
+  const displayBlogs =() => {
+    if(blogList.length ===0)
+    {
+      return <p>Loading.... Please Wait!</p>
+    }
+    else
+    {
+      return <div className=''>
+        
+      </div>
+    }
+  }
   
   return (
     <div className='flex justify-start mx-auto h-[200vh] flex-col'>
@@ -23,7 +48,7 @@ const Home = () => {
         <div>
           <h1 className='text-3xl font-bold'>LATEST POSTS</h1>
           <div className='grid grid-cols-4'>
-            {}
+            {displayBlogs()}
           </div>
         </div>
       </main>
