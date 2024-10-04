@@ -23,7 +23,11 @@ const ViewBlog = () => {
     }, []);
 
   return (
-    <div>viewBlog</div>
+    <div className='h-[100vh]'>
+      <div>
+        
+      </div>
+    </div>
   )
 }
 
