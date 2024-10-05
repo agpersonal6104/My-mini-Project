@@ -30,7 +30,7 @@ const Login = () => {
   })
 
   return (
-    <div className='flex items-center justify-center h-[96vh] mt-0'>
+    <div className='flex items-center justify-center h-[103vh] mt-0'>
         <div className='w-[25%] h-[55%] justify-center items-center'>
             <div className='flex flex-col items-center justify-center h-[25%]'>
               

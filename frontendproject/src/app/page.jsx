@@ -34,7 +34,9 @@ const Home = () => {
   const displayBlogs =() => {
     if(blogList.length ===0)
     {
-      return <p>Loading.... Please Wait!</p>
+      return <div className='flex items-center justify-center'>
+        <p className='text-2xl font-bold text-center'>Loading.... Please Wait!</p>
+      </div>
     }
     else if(error)
     {
@@ -42,7 +44,7 @@ const Home = () => {
     }
     else
     {
-      return <div className=''>
+      return <div className='flex flex-col items-center justify-center'>
         
       </div>
     }
@@ -57,25 +59,50 @@ const Home = () => {
         </div>
       </header>
       <main className='h-[70%] flex flex-col items-center justify-start w-full'>
+        
         <div>
-          <h1 className='text-3xl font-bold text-center h-[5%]'>LATEST POSTS</h1>
-          <div className='grid items-center justify-center grid-cols-4 gap-10 h-[60%]'>
+          <div className='flex justify-center h-[5%] items-center py-2'>
+            <h1 className='text-2xl font-bold text-center'>LATEST POSTS</h1>
+          </div>
+          
+          <div className='grid items-center justify-center gap-10 h-[80vh] grid-cols-4'>
             {displayBlogs()}
           </div>
-          <div className='h-[35%] grid grid-cols-4 justify-center items-center gap-8 bg-purple-100 px-2'>
-            <div className='flex flex-col items-start justify-center border border-black rounded-lg'>
-              <h1>Visual Studio Blog</h1>
-              <p>The official source of product insight from the Visual Studio Engineering Team</p>
+          
+          <div className='h-[20vh] w-full grid grid-cols-4 justify-center items-center gap-8 bg-purple-100 mx-auto px-4 py-6'>
+            
+            <div class="mx-auto p-6 block bg-white overflow-hidden h-full w-full rounded-lg">
+              <div class="flex items-stretch flex-col gap-1">
+                <h1>Visual Studio Blog</h1>
+                <p>The official source of product insight from the Visual Studio Engineering Team</p>
+              </div>
             </div>
-            <div className='flex flex-col items-start justify-center border border-black rounded-lg'>
-              <h1>Python</h1>
-              <p>Read the latest updates about all things Python at Microsoft</p>
+            
+            <div class="mx-auto p-6 block bg-white overflow-hidden h-full w-full rounded-lg">
+              <div class="flex items-stretch flex-col gap-1">
+                <h1>Python</h1>
+                <p>Read the latest updates about all things Python at Microsoft</p>
+              </div>
             </div>
-            <div className='flex flex-col items-start justify-center border border-black rounded-lg'>
-              <h1>JavaScript</h1>
-              <p>The official blog of the JavaScript team.</p>
+            
+            <div class="mx-auto p-6 block bg-white overflow-hidden h-full w-full rounded-lg">
+              <div class="flex items-stretch flex-col gap-1">
+                <h1>JavaScript</h1>
+                <p>The official blog of the JavaScript team.</p>
+              </div>
             </div>
+            
+            <div class="mx-auto p-6 block bg-white overflow-hidden h-full w-full rounded-lg">
+              <div class="flex items-stretch flex-col gap-1">
+                <h1>React</h1>
+                <p>The official blog of the React team.</p>
+              </div>
+            </div>
+            
           </div>
+
+          <div className='h-[23vh]'></div>
+          
         </div>
       </main>
       <>
