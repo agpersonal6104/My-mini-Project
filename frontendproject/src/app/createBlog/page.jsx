@@ -1,5 +1,16 @@
+'use client';
+import { useFormik } from 'formik';
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+import * as Yup from 'yup';
+
+const createBlogSchema = Yup.object().shape({
+  title: Yup.string().required('Required'),
+  
+})
+
 const CreateBlog = () => {
-  const [imageUrl, setImageUrl] = useState(''); // Initialize with an empty string
+  const [imageUrl, setImageUrl] = useState([]); // Initialize with an empty string
 
   // const handleUpload = (e) => {
   //   const file = e.target.files[0];
@@ -29,14 +40,14 @@ const CreateBlog = () => {
     formData.append('file', file);
     formData.append('upload_preset', 'mypreset');
     formData.append('cloud_name', 'dv8josqjy');
-  
+    
     axios.post('https://api.cloudinary.com/v1_1/dv8josqjy/image/upload', formData, {
       headers: { 'Content-type': 'multipart/form-data' }
     })
     .then((result) => {
       console.log(result.data);
       setImageUrl(result.data.secure_url); // Update the image URL state
-      createBlogForm.setFieldValue('image', result.data.secure_url); // Update the image field in the form
+      createBlogForm.setFieldValue('image', result.data); // Update the image field in the form with the entire response object
       toast.success('File Uploaded Successfully');
     }).catch((err) => {
       console.log(err);
@@ -51,6 +62,7 @@ const CreateBlog = () => {
       description: '',
       author: ''
     },
+    
     onSubmit: (values, { resetForm, setSubmitting }) => {
       axios.post('http://localhost:6000/blog/add', values)
       .then((response) => {
@@ -64,6 +76,7 @@ const CreateBlog = () => {
         toast.error(err?.response?.data?.message)
       });
     },
+    
     validationSchema: createBlogSchema
   })
 
@@ -92,13 +105,6 @@ const CreateBlog = () => {
             className='border border-purple-400 h-[40px] w-[200px]'
             {...createBlogForm.getFieldProps('description')} // Connect the input to the formik field
           />
-
-          {/* Remove the hidden input field, as it's not needed */}
-          {/* <input
-            type="hidden"
-            value={imageUrl}
-            {...createBlogForm.getFieldProps('image')} // Connect the image URL to the formik field
-          /> */}
 
           <button type="submit">Create Blog Post</button>
         </form>
