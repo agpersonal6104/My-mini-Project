@@ -2,7 +2,7 @@ const express = require('express');
 const Model = require('../models/userModel');
 
 const jwt = require('jsonwebtoken');
-const verifyToken = require('./verifyTokens');
+const verifyToken = require('./verifyToken');
 require('dotenv').config();
 
 const router = express.Router();
@@ -152,10 +152,5 @@ router.post('/authenticate', (req,res) => {
         
     });
 })
-
-// npm init -y
-// npm i express
-// npm i nodemon
-// add dev script
 
 module.exports = router;

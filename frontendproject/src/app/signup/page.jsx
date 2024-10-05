@@ -42,20 +42,13 @@ const SignUp = () => {
     //       toast.error(err?.response?.data?.message);
     //     });
     // },
+
     onSubmit: (values, { resetForm, setSubmitting }) => {
-      axios.post('http://localhost:6000/user/add', { data: values })
-        .then((response) => {
-          console.log(response.status);
-          resetForm();
-          toast.success('User  Registered Successfully!');
-        })
-        .catch((err) => {
-          console.log(err);
-          console.log(err.response?.data);
-          setSubmitting(false);
-          toast.error(err?.response?.data?.message);
-        });
+      console.log(values);
+      resetForm();
+      toast.success('User   Registered Successfully!');
     },
+    
     validationSchema: SignupSchema
   });
 

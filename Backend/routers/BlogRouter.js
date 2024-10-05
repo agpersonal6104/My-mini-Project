@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const blogModel = require('../models/blogModel'); // Import the updated blog model
+const blogModel = require('../models/blogModel');
 
 // Create a new blog post
 router.post('/add', async (req, res) => {
