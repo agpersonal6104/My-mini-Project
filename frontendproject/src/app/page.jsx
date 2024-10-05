@@ -56,11 +56,25 @@ const Home = () => {
           <p className='text-2xl font-bold'>Get the <span className='italic text-purple-600'>{typeEffect}</span></p>
         </div>
       </header>
-      <main className='h-[70%] flex flex-col items-center justify-center w-full'>
+      <main className='h-[70%] flex flex-col items-center justify-start w-full'>
         <div>
-          <h1 className='text-3xl font-bold'>LATEST POSTS</h1>
-          <div className='grid grid-cols-4'>
+          <h1 className='text-3xl font-bold text-center h-[5%]'>LATEST POSTS</h1>
+          <div className='grid items-center justify-center grid-cols-4 gap-10 h-[60%]'>
             {displayBlogs()}
+          </div>
+          <div className='h-[35%] grid grid-cols-4 justify-center items-center gap-8 bg-purple-100 px-2'>
+            <div className='flex flex-col items-start justify-center border border-black rounded-lg'>
+              <h1>Visual Studio Blog</h1>
+              <p>The official source of product insight from the Visual Studio Engineering Team</p>
+            </div>
+            <div className='flex flex-col items-start justify-center border border-black rounded-lg'>
+              <h1>Python</h1>
+              <p>Read the latest updates about all things Python at Microsoft</p>
+            </div>
+            <div className='flex flex-col items-start justify-center border border-black rounded-lg'>
+              <h1>JavaScript</h1>
+              <p>The official blog of the JavaScript team.</p>
+            </div>
           </div>
         </div>
       </main>
