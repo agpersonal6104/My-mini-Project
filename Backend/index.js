@@ -32,7 +32,7 @@ app.post('/add', (req, res) => {
     res.send('Addition of content');
 });
 
-app.put('/update/:id', (req, res) => {
+app.put('/update', (req, res) => {
     res.send('Update of content');
 });
 
