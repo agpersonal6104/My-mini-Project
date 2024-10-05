@@ -1,6 +1,27 @@
 const CreateBlog = () => {
   const [imageUrl, setImageUrl] = useState(''); // Initialize with an empty string
 
+  // const handleUpload = (e) => {
+  //   const file = e.target.files[0];
+    
+  //   const formData = new FormData();
+  //   formData.append('file', file);
+  //   formData.append('upload_preset', 'mypreset');
+  //   formData.append('cloud_name', 'dv8josqjy');
+
+  //   axios.post('https://api.cloudinary.com/v1_1/dv8josqjy/image/upload', formData, {
+  //     headers: { 'Content-type' : 'multipart/form-data' }
+  //   })
+  //   .then((result) => {
+  //     console.log(result.data);
+  //     setImageUrl(result.data.secure_url); // Update the image URL state
+  //     toast.success('File Uploaded Successfully');
+  //   }).catch((err) => {
+  //     console.log(err);
+  //     toast.error('Failed to upload file');
+  //   });
+  // }
+
   const handleUpload = (e) => {
     const file = e.target.files[0];
     
@@ -8,13 +29,14 @@ const CreateBlog = () => {
     formData.append('file', file);
     formData.append('upload_preset', 'mypreset');
     formData.append('cloud_name', 'dv8josqjy');
-
+  
     axios.post('https://api.cloudinary.com/v1_1/dv8josqjy/image/upload', formData, {
-      headers: { 'Content-type' : 'multipart/form-data' }
+      headers: { 'Content-type': 'multipart/form-data' }
     })
     .then((result) => {
       console.log(result.data);
       setImageUrl(result.data.secure_url); // Update the image URL state
+      createBlogForm.setFieldValue('image', result.data.secure_url); // Update the image field in the form
       toast.success('File Uploaded Successfully');
     }).catch((err) => {
       console.log(err);

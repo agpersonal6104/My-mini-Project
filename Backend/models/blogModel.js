@@ -1,26 +1,19 @@
-const { mongoose } = require('../connections');
+const { model,Schema } = require('../connections');
 
-const mySchema = new mongoose.Schema({
+const mySchema = new Schema({
     title: {
         type: String,
         required: true
     },
     image: {
-        type: String,
-        required: false,
-        validate: {
-            validator: (v) => {
-                const urlRegex = /^https?:\/\/[^\s]+$/;
-                return urlRegex.test(v);
-            },
-            message: '{VALUE} is not a valid URL'
-        }
+        type: Object,
+        required: false
     },
     description: {
         type: String,
         required: true
     },
-    content: { // added content field for blog post content
+    content: { 
         type: String,
         required: true
     },
@@ -34,4 +27,4 @@ const mySchema = new mongoose.Schema({
     }
 });
 
-const blogModel = mongoose.model('Blog', mySchema);
+const blogModel = model('Blog', mySchema);
