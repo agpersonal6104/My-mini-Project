@@ -27,26 +27,26 @@ const SignUp = () => {
       password: '',
       confirmPassword: ''
     },
-    // onSubmit: (values, { resetForm, setSubmitting }) => {
-    //   console.log(values);
-    //   axios.post('http://localhost:6000/user/add', values)
-    //     .then((response) => {
-    //       console.log(response.status);
-    //       resetForm();
-    //       toast.success('User Registered Successfully!');
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //       console.log(err.response?.data);
-    //       setSubmitting(false);
-    //       toast.error(err?.response?.data?.message);
-    //     });
-    // },
-
+    
     onSubmit: (values, { resetForm, setSubmitting }) => {
       console.log(values);
-      resetForm();
-      toast.success('User   Registered Successfully!');
+      axios.post('http://localhost:6000/user/add', values)
+        .then((response) => {
+          console.log(response.status);
+          resetForm();
+          toast.success('User Registered Successfully!');
+        })
+        .catch((err) => {
+          setSubmitting(false);
+          console.error(err);
+          if (err.response) {
+            toast.error(err.response.data.message || "Network error occurred.");
+          } else if (err.request) {
+            toast.error("Failed to send request.");
+          } else {
+            toast.error("An unexpected error occurred.");
+          }
+        });
     },
     
     validationSchema: SignupSchema
@@ -151,12 +151,12 @@ const SignUp = () => {
               )
             }
 
-            <button
+        <button
           type="submit"
           disabled={signupForm.isSubmitting}
           className='text-white bg-cyan-700 h-[50px] w-[79%] px-4 my-6 font-bold rounded-lg hover:bg-cyan-500'
         >
-          Sign Up
+          <span>Sign Up</span>
         </button>
 
             <h1 className='font-bold text-md'>Have an Account? <Link className='text-blue-600' href="/login">Log In</Link></h1>
