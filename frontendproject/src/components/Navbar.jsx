@@ -80,9 +80,9 @@ const Navbar = () => {
           </Link>
           <Link
             className={"py-3 font-medium ps-px sm:px-3 "+ (path === '/' ? 'text-white' : 'text-white/80') }
-            href="#"
+            href="/createBlog"
           >
-            Account
+            New Blog
           </Link>
           <Link
             className="py-3 font-medium ps-px sm:px-3 text-white/80 hover:text-white"
