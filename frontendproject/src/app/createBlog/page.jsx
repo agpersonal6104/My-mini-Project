@@ -82,10 +82,11 @@ const CreateBlog = () => {
 
   return (
     <div className="h-[90vh] flex justify-center items-center">
-      <div className="flex items-center justify-center w-1/3 shadow-xl rounded-xl h-1/2">
-        <div>
+      <div className="flex items-center justify-center w-1/2 border border-black shadow-xl rounded-xl h-[60%]">
+      
+        <div className='w-1/2 h-full border-2 border-red-500'>
           
-          <div className='flex justify-center max-w-2xl p-8 mx-auto mt-3 border-4 border-purple-300 rounded-lg'>
+          <div className='flex justify-center w-full p-10 mx-auto border-4 border-purple-300 rounded-lg'>
             <label htmlFor="uploadfile" className='text-5xl font-vold '>⚡ Upload your File</label>
             <input
               onChange={handleUpload}
@@ -94,14 +95,16 @@ const CreateBlog = () => {
           </div>
           
         </div>
-        <form className='flex flex-col items-start justify-center gap-4 h-[80%] w-[70%] px-16'>
+        
+        <form className='flex flex-col items-start justify-center w-1/2 h-full gap-4 px-16 border-2 border-blue-500'
+        onSubmit={createBlogForm.handleSubmit}>
           <input
             type="text"
             placeholder='Enter the Title'
             className='border border-purple-400 h-[40px] w-[200px]'
-            {...createBlogForm.getFieldProps('title')} // Connect the input to the formik field
-          />
-          
+            value={createBlogForm.title}
+            onChange={createBlogForm.handleChange}
+          />          
 
           <input
             type="text"
@@ -110,6 +113,14 @@ const CreateBlog = () => {
             {...createBlogForm.getFieldProps('description')} // Connect the input to the formik field
           />
 
+          <textarea type="text"
+          value={createBlogForm.content}
+          onChange={createBlogForm.handleChange}
+          placeholder='Enter the Content'
+          className='border border-purple-400 h-[40px] w-[200px]' />
+
+          <input type="text" />
+          
           <button type="submit">Create Blog Post</button>
         </form>
       </div>
