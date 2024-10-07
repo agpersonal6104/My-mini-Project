@@ -81,8 +81,8 @@ const CreateBlog = () => {
   })
 
   return (
-    <div className="h-[90vh] flex justify-center items-center">
-      <div className="flex items-center justify-center w-1/2 border border-black shadow-xl rounded-xl h-[60%]">
+    <div className="h-[90vh] flex justify-center items-center bg-purple-50">
+      <div className="flex items-center justify-center w-1/2 shadow-xl rounded-xl h-[60%] bg-white">
       
         <div className='flex items-center justify-center w-1/2 h-full'>
           
