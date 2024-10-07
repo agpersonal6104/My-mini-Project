@@ -83,7 +83,18 @@ const CreateBlog = () => {
   return (
     <div className="h-[90vh] flex justify-center items-center">
       <div className="flex items-center justify-center w-1/3 shadow-xl rounded-xl h-1/2">
-        <form className='flex flex-col items-start justify-center gap-4 border border-black h-[80%] w-[70%] px-16'>
+        <div>
+          
+          <div className='flex justify-center max-w-2xl p-8 mx-auto mt-3 border-4 border-purple-300 rounded-lg'>
+            <label htmlFor="uploadfile" className='text-5xl font-vold '>⚡ Upload your File</label>
+            <input
+              onChange={handleUpload}
+              id='uploadfile' type="file" className='hidden'
+            />
+          </div>
+          
+        </div>
+        <form className='flex flex-col items-start justify-center gap-4 h-[80%] w-[70%] px-16'>
           <input
             type="text"
             placeholder='Enter the Title'
@@ -91,13 +102,6 @@ const CreateBlog = () => {
             {...createBlogForm.getFieldProps('title')} // Connect the input to the formik field
           />
           
-          <div className='flex justify-center max-w-2xl p-8 mx-auto mt-3 border-4 border-blue-300 rounded-lg'>
-            <label htmlFor="uploadfile" className='text-5xl font-vold '>⚡ Upload your File</label>
-            <input
-              onChange={handleUpload}
-              id='uploadfile' type="file" className='hidden'
-            />
-          </div>
 
           <input
             type="text"

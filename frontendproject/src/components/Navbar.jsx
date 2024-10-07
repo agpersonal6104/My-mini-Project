@@ -100,7 +100,7 @@ const Navbar = () => {
                 </Link>
                 
                 <Link
-                  className={"flex items-center p-2 text-sm text-gray-800 rounded-lg "+ ( path === '/account' ? 'bg-gray-200' : 'bg-white')}
+                  className={"flex items-center p-2 text-sm text-gray-800 rounded-lg "+ ( path === '/createBlog' ? 'bg-gray-200' : 'bg-white')}
                   href="/createBlog"
                 >
                   <svg
@@ -121,7 +121,7 @@ const Navbar = () => {
                   Create Blog
                 </Link>
                 <Link
-                  className={"flex items-center p-2 text-sm text-gray-800 rounded-lg "+ ( path === '/work' ? 'bg-gray-200' : 'bg-white')}
+                  className={"flex items-center p-2 text-sm text-gray-800 rounded-lg "+ ( path === '/aboutUs' ? 'bg-gray-200' : 'bg-white')}
                   href="/aboutUs"
                 >
                   <svg
@@ -144,7 +144,7 @@ const Navbar = () => {
                   About Us
                 </Link>
                 <Link
-                  className={"flex items-center p-2 text-sm text-gray-800 rounded-lg "+ ( path === '/blog' ? 'bg-gray-200' : 'bg-white')}
+                  className={"flex items-center p-2 text-sm text-gray-800 rounded-lg "+ ( path === '/ContactUs' ? 'bg-gray-200' : 'bg-white')}
                   href="/contactUs"
                 >
                   <svg
