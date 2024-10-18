@@ -6,8 +6,12 @@ import * as Yup from 'yup';
 
 const createBlogSchema = Yup.object().shape({
   title: Yup.string().required('Required'),
-  
-})
+  description: Yup.string().required('Required'),
+  content: Yup.string().required('Required'),
+  author: Yup.string().required('Required'),
+});
+
+const cloudinaryPreset = 'dv8josqjy';
 
 const CreateBlog = () => {
   const [imageUrl, setImageUrl] = useState(''); // State for image URL
@@ -23,21 +27,18 @@ const CreateBlog = () => {
     formData.append('file', file);
     formData.append('upload_preset', cloudinaryPreset);
 
-    try {
-      const response = await fetch('https://api.cloudinary.com/v1_1/your_cloud_name/image/upload', {
-        method: 'POST',
-        body: formData
-      });
-
-      const data = await response.json();
-      setImageUrl(data.secure_url);
-      toast.success('Image uploaded successfully!');
-    } catch (error) {
-      console.error('Error uploading image:', error);
-      toast.error('Error uploading image');
-
-    }
-  };
+    axios.post('https://api.cloudinary.com/v1_1/dv8josqjy/image/upload', formData, {
+      headers: { 'Content-type': 'multipart/form-data' }
+    })
+    .then((result) => {
+      console.log(result.data);
+      setImageUrl(result.data.secure_url); // Set the image URL from the response
+      toast.success('File Uploaded Successfully');
+    }).catch((err) => {
+      console.log(err);
+      toast.error('Failed to upload file');
+    });
+};
 
   const createBlogForm = useFormik({
     initialValues: {
