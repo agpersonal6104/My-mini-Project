@@ -5,10 +5,7 @@ const mySchema = new Schema({
         type: String,
         required: true
     },
-    image: {
-        type: Object,
-        required: false
-    },
+    imageUrl: { type: String },
     description: {
         type: String,
         required: true

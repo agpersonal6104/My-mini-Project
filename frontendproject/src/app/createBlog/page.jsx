@@ -10,50 +10,34 @@ const createBlogSchema = Yup.object().shape({
 })
 
 const CreateBlog = () => {
-  const [imageUrl, setImageUrl] = useState([]); // Initialize with an empty string
+  const [imageUrl, setImageUrl] = useState(''); // State for image URL
 
-  // const handleUpload = (e) => {
-  //   const file = e.target.files[0];
-    
-  //   const formData = new FormData();
-  //   formData.append('file', file);
-  //   formData.append('upload_preset', 'mypreset');
-  //   formData.append('cloud_name', 'dv8josqjy');
+  const handleUpload = async (event) => {
+    const file = event.target.files[0];
 
-  //   axios.post('https://api.cloudinary.com/v1_1/dv8josqjy/image/upload', formData, {
-  //     headers: { 'Content-type' : 'multipart/form-data' }
-  //   })
-  //   .then((result) => {
-  //     console.log(result.data);
-  //     setImageUrl(result.data.secure_url); // Update the image URL state
-  //     toast.success('File Uploaded Successfully');
-  //   }).catch((err) => {
-  //     console.log(err);
-  //     toast.error('Failed to upload file');
-  //   });
-  // }
+    if (!file) {
+      return toast.error('Please select an image to upload');
+    }
 
-  const handleUpload = (e) => {
-    const file = e.target.files[0];
-    
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('upload_preset', 'mypreset');
-    formData.append('cloud_name', 'dv8josqjy');
-    
-    axios.post('https://api.cloudinary.com/v1_1/dv8josqjy/image/upload', formData, {
-      headers: { 'Content-type': 'multipart/form-data' }
-    })
-    .then((result) => {
-      console.log(result.data);
-      setImageUrl(result.data.secure_url); // Update the image URL state
-      createBlogForm.setFieldValue('image', result.data); // Update the image field in the form with the entire response object
-      toast.success('File Uploaded Successfully');
-    }).catch((err) => {
-      console.log(err);
-      toast.error('Failed to upload file');
-    });
-  }
+    formData.append('upload_preset', cloudinaryPreset);
+
+    try {
+      const response = await fetch('https://api.cloudinary.com/v1_1/your_cloud_name/image/upload', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+      setImageUrl(data.secure_url);
+      toast.success('Image uploaded successfully!');
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      toast.error('Error uploading image');
+
+    }
+  };
 
   const createBlogForm = useFormik({
     initialValues: {
