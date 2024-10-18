@@ -30,7 +30,7 @@ const SignUp = () => {
     
     onSubmit: (values, { resetForm, setSubmitting }) => {
       console.log(values);
-      axios.post('http://localhost:6000/user/add', values)
+      axios.post('http://localhost:5000/user/add', values)
         .then((response) => {
           console.log(response.status);
           resetForm();

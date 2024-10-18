@@ -7,64 +7,66 @@ import * as Yup from 'yup';
 
 const createBlogSchema = Yup.object().shape({
   title: Yup.string().required('Required'),
+  imageUrl: Yup.string().url('Invalid URL').required('Required'), // Validate URL
   description: Yup.string().required('Required'),
   content: Yup.string().required('Required'),
   author: Yup.string().required('Required'),
 });
 
-const cloudinaryPreset = 'dv8josqjy';
+const cloudinaryPreset = 'dv8josqjy'; // Your Cloudinary preset
+const cloudinaryUrl = `https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/image/upload`; // Replace YOUR_CLOUD_NAME with your Cloudinary cloud name
 
 const CreateBlog = () => {
-  const [imageUrl, setImageUrl] = useState(''); // State for image URL
-
-  const handleUpload = async (event) => {
-    const file = event.target.files[0];
-
-    if (!file) {
-      return toast.error('Please select an image to upload');
-    }
-
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', cloudinaryPreset);
-
-    axios.post('https://api.cloudinary.com/v1_1/dv8josqjy/image/upload', formData, {
-      headers: { 'Content-type': 'multipart/form-data' }
-    })
-    .then((result) => {
-      console.log(result.data);
-      setImageUrl(result.data.secure_url); // Set the image URL from the response
-      toast.success('File Uploaded Successfully');
-    }).catch((err) => {
-      console.log(err);
-      toast.error('Failed to upload file');
-    });
-};
+  const [imageFile, setImageFile] = useState(null);
+  const [imageUrl, setImageUrl] = useState('');
 
   const createBlogForm = useFormik({
     initialValues: {
       title: '',
-      image: imageUrl, // Initialize with the current image URL
+      imageUrl: '', // This will be set after uploading the image
       description: '',
+      content: '',
       author: ''
     },
     
     onSubmit: (values, { resetForm, setSubmitting }) => {
-      axios.post('http://localhost:6000/blog/add', values)
+      // Include the imageUrl in the values
+      values.imageUrl = imageUrl; // Set the imageUrl from the uploaded image
+      
+      axios.post('http://localhost:5000/blog/add', values)
       .then((response) => {
         console.log(response);
         resetForm();
+        setImageFile(null);
+        setImageUrl('');
         toast.success('Blog Posted Successfully!');
       }).catch((err) => {
         console.log(err);
         console.log(err.response?.data);
         setSubmitting(false);
-        toast.error(err?.response?.data?.message)
+        toast.error(err?.response?.data?.message);
       });
     },
     
     validationSchema: createBlogSchema
-  })
+  });
+
+  const handleImageUpload = async (event) => {
+    const file = event.currentTarget.files[0];
+    setImageFile(file);
+    
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', cloudinaryPreset);
+    
+    try {
+      const response = await axios.post(cloudinaryUrl, formData);
+      setImageUrl(response.data.secure_url); // Get the secure URL from Cloudinary response
+    } catch (error) {
+      console.error("Image upload failed:", error);
+      toast.error('Image upload failed!');
+    }
+  };
 
   return (
     <div className="h-[90vh] flex justify-center items-center bg-purple-50">
@@ -75,9 +77,13 @@ const CreateBlog = () => {
           <div className='flex justify-center w-[80%] p-10 mx-auto border-4 border-purple-300 rounded-lg'>
             <label htmlFor="uploadfile" className='text-5xl text-center font-vold'>Upload your File</label>
             <input
-              onChange={handleUpload}
-              id='uploadfile' type="file" className='hidden'
-            />
+            type="text"
+            id='imageUrl'
+            onChange={createBlogForm.handleChange}
+            value={createBlogForm.values.imageUrl}
+            placeholder='Enter the Image URL'
+            className='container border border-purple-500 h-[40px] rounded-md px-2'
+          />
           </div>
           
         </div>
@@ -91,12 +97,14 @@ const CreateBlog = () => {
             type="text"
             placeholder='Enter the Title'
             className='container border border-purple-500 h-[40px] rounded-md px-2'
+            id='title'
             value={createBlogForm.title}
             onChange={createBlogForm.handleChange}
           />
 
           <input
             type="text"
+            id='description'
             onChange={createBlogForm.handleChange}
             value={createBlogForm.description}
             placeholder='Enter the Description'
@@ -104,12 +112,14 @@ const CreateBlog = () => {
           />
 
           <textarea type="text"
+          id='content'
           value={createBlogForm.content}
           onChange={createBlogForm.handleChange}
           placeholder='Enter the Content'
           className='container border border-purple-500 h-[70px] rounded-md px-2' />
 
           <input type="text"
+          id='author'
           onChange={createBlogForm.handleChange}
           value={createBlogForm.author}
           placeholder='Enter the Name of the Author'
