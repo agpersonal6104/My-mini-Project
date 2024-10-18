@@ -1,6 +1,8 @@
-const { model,Schema } = require('../connections');
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const mySchema = new Schema({
+// Define the schema
+const blogSchema = new Schema({
     title: {
         type: String,
         required: true
@@ -24,4 +26,8 @@ const mySchema = new Schema({
     }
 });
 
-const blogModel = model('Blog', mySchema);
+// Create the model
+const blogModel = mongoose.model('Blog', blogSchema);
+
+// Export the model
+module.exports = blogModel;

@@ -6,16 +6,15 @@ const router = express.Router();
 
 // Create a new blog post
 router.post('/add', async (req, res) => {
-
     console.log(req.body);
     
-    new blogModel(req.body).save()
-    .then((result) => {
-        res.status(200).json(result);
-    }).catch((err) => {
+    try {
+        const newBlog = await blogModel.create(req.body);
+        res.status(200).json(newBlog);
+    } catch (err) {
         console.log(err);
         res.status(500).json(err);
-    });
+    }
 });
 
 // Get all blog posts

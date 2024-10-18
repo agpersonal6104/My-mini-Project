@@ -1,4 +1,4 @@
-const { model, Schema } = require('../connection');
+const { model, Schema } = require('../connections');
 
 const mySchema = new Schema({
     email : {type : String, unique : true},

@@ -1,4 +1,5 @@
 'use client';
+import axios from 'axios';
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -71,8 +72,8 @@ const CreateBlog = () => {
       
         <div className='flex items-center justify-center w-1/2 h-full'>
           
-          <div className='flex justify-center w-full p-10 mx-auto border-4 border-purple-300 rounded-lg'>
-            <label htmlFor="uploadfile" className='text-5xl font-vold '>⚡ Upload your File</label>
+          <div className='flex justify-center w-[80%] p-10 mx-auto border-4 border-purple-300 rounded-lg'>
+            <label htmlFor="uploadfile" className='text-5xl text-center font-vold'>Upload your File</label>
             <input
               onChange={handleUpload}
               id='uploadfile' type="file" className='hidden'
@@ -89,7 +90,7 @@ const CreateBlog = () => {
           <input
             type="text"
             placeholder='Enter the Title'
-            className='container border border-purple-500 h-[40px] rounded-md'
+            className='container border border-purple-500 h-[40px] rounded-md px-2'
             value={createBlogForm.title}
             onChange={createBlogForm.handleChange}
           />
@@ -99,23 +100,23 @@ const CreateBlog = () => {
             onChange={createBlogForm.handleChange}
             value={createBlogForm.description}
             placeholder='Enter the Description'
-            className='container border border-purple-500 h-[40px] rounded-md'
+            className='container border border-purple-500 h-[40px] rounded-md px-2'
           />
 
           <textarea type="text"
           value={createBlogForm.content}
           onChange={createBlogForm.handleChange}
           placeholder='Enter the Content'
-          className='container border border-purple-500 h-[70px] rounded-md' />
+          className='container border border-purple-500 h-[70px] rounded-md px-2' />
 
           <input type="text"
           onChange={createBlogForm.handleChange}
           value={createBlogForm.author}
           placeholder='Enter the Name of the Author'
-          className='container border border-purple-500 h-[40px] rounded-md'
+          className='container border border-purple-500 h-[40px] rounded-md px-2'
           />
           
-          <button type="submit" onClick={createBlogForm.handleSubmit} className='container text-white bg-purple-500 hover:bg-purple-200 hover:text-black h-[30px]'>Create Blog Post</button>
+          <button type="submit" onClick={createBlogForm.handleSubmit} className='container text-white bg-purple-500 hover:bg-purple-200 hover:text-black h-[40px] rounded-md'>Create Blog Post</button>
         </form>
       </div>
     </div>
