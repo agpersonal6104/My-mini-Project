@@ -22,8 +22,32 @@ const Login = () => {
       password: ''
     },
 
-    onSubmit: (values) => {
-      console.log(values);
+    // onSubmit: (values) => {
+    //   console.log(values);
+    //   try{
+    //     const 
+    //   }
+    // },
+
+    onSubmit: async (values) => {
+      try {
+        const response = await fetch('/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(values),
+        });
+
+        if (!response.ok) {
+          throw new Error('Login failed');
+        }
+
+        const data = await response.json();
+        console.log(data); // Handle successful login (e.g., redirect or store token)
+      } catch (error) {
+        setErrorMessage(error.message);
+      }
     },
 
     validationSchema: LoginSchema
@@ -58,6 +82,8 @@ const Login = () => {
             <form
             onSubmit={loginForm.handleSubmit}
             className='flex flex-col items-center justify-center h-[55%]'>
+
+              {errorMessage && <p className="text-xs text-red-600">{errorMessage}</p>}
 
               <label htmlFor="email" className='self-start my-2 font-bold px-11 text-cyan-700'>Email</label>
               <input
