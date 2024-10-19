@@ -14,7 +14,7 @@ const createBlogSchema = Yup.object().shape({
 });
 
 const cloudinaryPreset = 'dv8josqjy'; // Your Cloudinary preset
-const cloudinaryUrl = `https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/image/upload`; // Replace YOUR_CLOUD_NAME with your Cloudinary cloud name
+const cloudinaryUrl = 'https://api.cloudinary.com/v1_1/dv8josqjy/image/upload'; // Replace YOUR_CLOUD_NAME with your Cloudinary cloud name
 
 const CreateBlog = () => {
   const [imageFile, setImageFile] = useState(null);
@@ -29,23 +29,28 @@ const CreateBlog = () => {
       author: ''
     },
     
-    onSubmit: (values, { resetForm, setSubmitting }) => {
-      // Include the imageUrl in the values
-      values.imageUrl = imageUrl; // Set the imageUrl from the uploaded image
-      
-      axios.post('http://localhost:5000/blog/add', values)
-      .then((response) => {
+    onSubmit: async (values, { resetForm, setSubmitting }) => {
+      try {
+        // Check if an image has been uploaded
+        if (!values.imageUrl) {
+          toast.error('Please upload an image before submitting');
+          setSubmitting(false);
+          return;
+        }
+    
+        const response = await axios.post('http://localhost:5000/blog/add', values);
         console.log(response);
         resetForm();
         setImageFile(null);
         setImageUrl('');
         toast.success('Blog Posted Successfully!');
-      }).catch((err) => {
+      } catch (err) {
         console.log(err);
         console.log(err.response?.data);
+        toast.error(err?.response?.data?.message || 'Error posting blog');
+      } finally {
         setSubmitting(false);
-        toast.error(err?.response?.data?.message);
-      });
+      }
     },
     
     validationSchema: createBlogSchema
@@ -61,7 +66,10 @@ const CreateBlog = () => {
     
     try {
       const response = await axios.post(cloudinaryUrl, formData);
-      setImageUrl(response.data.secure_url); // Get the secure URL from Cloudinary response
+      const secureUrl = response.data.secure_url;
+      setImageUrl(secureUrl);
+      createBlogForm.setFieldValue('imageUrl', secureUrl); // Set the imageUrl in the form
+      toast.success('Image uploaded successfully!');
     } catch (error) {
       console.error("Image upload failed:", error);
       toast.error('Image upload failed!');
@@ -74,17 +82,16 @@ const CreateBlog = () => {
       
         <div className='flex items-center justify-center w-1/2 h-full'>
           
-          <div className='flex justify-center w-[80%] p-10 mx-auto border-4 border-purple-300 rounded-lg'>
-            <label htmlFor="uploadfile" className='text-5xl text-center font-vold'>Upload your File</label>
-            <input
-            type="text"
-            id='imageUrl'
-            onChange={createBlogForm.handleChange}
-            value={createBlogForm.values.imageUrl}
-            placeholder='Enter the Image URL'
-            className='container border border-purple-500 h-[40px] rounded-md px-2'
-          />
-          </div>
+        <div className='flex flex-col items-center w-[80%] p-10 mx-auto border-4 border-purple-300 rounded-lg'>
+          <label htmlFor="imageUrl" className='mb-4 text-5xl font-bold text-center'>Upload your File</label>
+          <input
+          type="file"
+          id='imageUpload'
+          onChange={handleImageUpload}
+          accept="image/*"
+          className='w-full h-[40px] rounded-md px-2'
+/>
+        </div>
           
         </div>
         
@@ -98,35 +105,44 @@ const CreateBlog = () => {
             placeholder='Enter the Title'
             className='container border border-purple-500 h-[40px] rounded-md px-2'
             id='title'
-            value={createBlogForm.title}
+            name='title'
+            value={createBlogForm.values.title}
             onChange={createBlogForm.handleChange}
           />
 
           <input
             type="text"
             id='description'
+            name='description'
             onChange={createBlogForm.handleChange}
-            value={createBlogForm.description}
+            value={createBlogForm.values.description}
             placeholder='Enter the Description'
             className='container border border-purple-500 h-[40px] rounded-md px-2'
           />
 
           <textarea type="text"
           id='content'
-          value={createBlogForm.content}
+          name='content'
+          value={createBlogForm.values.content}
           onChange={createBlogForm.handleChange}
           placeholder='Enter the Content'
           className='container border border-purple-500 h-[70px] rounded-md px-2' />
 
           <input type="text"
           id='author'
+          name='author'
           onChange={createBlogForm.handleChange}
-          value={createBlogForm.author}
+          value={createBlogForm.values.author}
           placeholder='Enter the Name of the Author'
           className='container border border-purple-500 h-[40px] rounded-md px-2'
           />
           
-          <button type="submit" onClick={createBlogForm.handleSubmit} className='container text-white bg-purple-500 hover:bg-purple-200 hover:text-black h-[40px] rounded-md'>Create Blog Post</button>
+          <button 
+          type="submit" 
+          disabled={createBlogForm.isSubmitting} 
+          className='container text-white bg-purple-500 hover:bg-purple-200 hover:text-black h-[40px] rounded-md'>
+            {createBlogForm.isSubmitting ? 'Submitting...' : 'Create Blog Post'}
+          </button>
         </form>
       </div>
     </div>

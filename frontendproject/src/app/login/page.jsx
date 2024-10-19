@@ -61,14 +61,14 @@ const Login = () => {
                 <h1 className='my-3 text-xl font-bold text-cyan-700'>Log in to your Account</h1>
                 
                 <div className='grid grid-cols-2 gap-6'>
-                    <button className='flex px-8 py-4 font-bold border rounded-lg border-cyan-700'>
+                    <button className='box-border flex px-8 py-4 font-bold border rounded-lg border-cyan-700'>
                       <img src="google.png" alt="google-logo" className='h-[20px] w-[20px] mr-2'/>
                       <span className="text-red-600">G</span>
                       <span className="text-yellow-500">oo</span>
                       <span className="text-green-600">gl</span>
                       <span className="text-blue-600">e</span>
                     </button>
-                    <button className='flex px-8 py-4 font-bold border rounded-lg border-cyan-700'><img src="facebook.png" alt="facebook-logo" className='h-[20px] w-[20px] mr-2' /><span className='text-blue-500'>Facebook</span></button>
+                    <button className='box-border flex px-8 py-4 font-bold border rounded-lg border-cyan-700'><img src="facebook.png" alt="facebook-logo" className='h-[20px] w-[20px] mr-2' /><span className='text-blue-500'>Facebook</span></button>
                 </div>
     
             </div>
@@ -82,8 +82,6 @@ const Login = () => {
             <form
             onSubmit={loginForm.handleSubmit}
             className='flex flex-col items-center justify-center h-[55%]'>
-
-              {errorMessage && <p className="text-xs text-red-600">{errorMessage}</p>}
 
               <label htmlFor="email" className='self-start my-2 font-bold px-11 text-cyan-700'>Email</label>
               <input

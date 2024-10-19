@@ -1,5 +1,6 @@
 'use client';
 import axios from 'axios';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import { useTypewriter } from 'react-simple-typewriter';
 
@@ -45,15 +46,25 @@ const Home = () => {
     }
     else
     {
-      return <div className='grid grid-cols-3'>
+      return <div className='grid grid-cols-1 gap-4 px-4 lg:grid-cols-4'>
         {
           blogList.map((blog) => {
-            return <div key={blog._id} className='flex flex-col'>
-              <h1 className='text-2xl font-bold text-purple-400 text-start'>{blog.title}</h1>
-              <img src={blog.imageUrl} alt="picture" className='w-[70%]' />
-              <h1 className='text-2xl font-bold'>{blog.description}</h1>
-              <h1 className='text-2xl font-bold'>{blog.content}</h1>
-              <h1 className='text-2xl font-bold'>{blog.author}</h1>
+            return <div key={blog._id} className='flex flex-col border rounded-md shadow-md h-[100%] container'>
+              <img src={blog.imageUrl} alt="" className='w-[20%] self-center lg:w-[60%]' />
+              <div className='grid lg:grid-cols-2 lg:gap-2 border-b-2 h-[10%] items-center lg:px-2 grid-cols-1'>
+                <h1 className='text-sm font-bold lg:text-md'>{blog.author}</h1>
+                <h1 className='text-sm italic lg:text-md'>{blog.createdAt}</h1>
+              </div>
+              
+              <div className='flex items-center justify-center'>
+                <div className='text-center'>
+                  <h1 className='text-sm italic'>{blog.title}</h1>
+                  <h1 className='font-bold text-md'>{blog.description}</h1>
+                  <h1 className='text-sm font-bold'>{blog.content}</h1>
+                  <Link href={'/viewBlog/'+blog._id} >View</Link>
+                </div>
+              </div>
+              
             </div>
           })
         }
@@ -62,25 +73,25 @@ const Home = () => {
   }
   
   return (
-    <div className='flex justify-start mx-auto h-[200vh] flex-col'>
-      <header className='h-[20%] w-full justify-start items-center flex bg-purple-100' id='backgroundHome'>
+    <div className='flex flex-col justify-start mx-auto'>
+      <header className='h-[40vh] w-full justify-start items-center flex bg-purple-100' id='backgroundHome'>
         <div className='flex flex-col gap-4 px-16'>
-          <h1 className='text-5xl font-bold'>DevLopBlogs</h1>
-          <p className='text-2xl font-bold'>Get the <span className='italic text-purple-600'>{typeEffect}</span></p>
+          <h1 className='text-xl font-bold lg:text-5xl'>DevLopBlogs</h1>
+          <p className='text-xl font-bold lg:text-2xl'>Get the <span className='italic text-purple-600'>{typeEffect}</span></p>
         </div>
       </header>
-      <main className='h-[140vh] flex flex-col items-center justify-start w-full'>
+      <main className='flex flex-col items-center justify-start w-full'>
         
         <div>
-          <div className='flex justify-center h-[7vh] items-center py-2'>
-            <h1 className='text-2xl font-bold text-center'>LATEST POSTS</h1>
+          <div className='flex justify-center h-[7vh] items-center border'>
+            <h1 className='text-3xl font-bold text-center'>LATEST POSTS</h1>
           </div>
           
-          <div className='flex items-center justify-center h-[70vh]'>
+          <div className='items-center justify-center gap-2'>
             {displayBlogs()}
           </div>
           
-          <div className='h-[28vh] w-full grid grid-cols-4 justify-center items-center gap-8 bg-purple-100 mx-auto px-4 py-6'>
+          <div className='grid items-center justify-center w-full grid-cols-2 gap-8 px-4 py-6 mx-auto bg-purple-100 lg:grid-cols-4'>
             
             <div class="mx-auto p-6 block bg-white overflow-hidden h-full w-full rounded-lg">
               <div class="flex items-stretch flex-col gap-1">
@@ -112,7 +123,7 @@ const Home = () => {
             
           </div>
 
-          <div className='h-[35vh]'></div>
+          <div className=''></div>
           
         </div>
       </main>
