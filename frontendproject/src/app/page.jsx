@@ -13,23 +13,28 @@ const Home = () => {
   })
 
   const [blogList, setBlogList] = useState([]);
-  const [error, setError] = useState(null);
 
   const fetchBlogData = async ()=> {
-    try {
       const res = await axios.get('http://localhost:5000/blog/getall');
       console.log(res.status);
+      console.table(res.data);
       setBlogList(res.data);
-    }
-    catch(error)
-    {
-      setError(error.message);
-    }
   }
   
   useEffect(()=> {
     fetchBlogData();
   });
+
+  const deleteBlog = (id) => {
+    axios.delete('http://localhost:5000/blog/delete/'+id)
+    .then((result) => {
+      toast.success('User deleted Successfully!');
+      fetchUsersData();
+    }).catch((err) => {
+      console.log(err);
+      toast.error('Failed to delete user!');
+    });
+  }
 
   const displayBlogs =() => {
     if(blogList.length ===0)
@@ -38,14 +43,20 @@ const Home = () => {
         <p className='text-2xl font-bold text-center'>Loading.... Please Wait!</p>
       </div>
     }
-    else if(error)
-    {
-      return <p>Error: {error}</p>
-    }
     else
     {
-      return <div className='flex flex-col items-center justify-center'>
-        
+      return <div className='grid grid-cols-3'>
+        {
+          blogList.map((blog) => {
+            return <div key={blog._id} className='flex flex-col'>
+              <h1 className='text-2xl font-bold text-purple-400 text-start'>{blog.title}</h1>
+              <img src={blog.imageUrl} alt="picture" className='w-[70%]' />
+              <h1 className='text-2xl font-bold'>{blog.description}</h1>
+              <h1 className='text-2xl font-bold'>{blog.content}</h1>
+              <h1 className='text-2xl font-bold'>{blog.author}</h1>
+            </div>
+          })
+        }
       </div>
     }
   }
@@ -58,18 +69,18 @@ const Home = () => {
           <p className='text-2xl font-bold'>Get the <span className='italic text-purple-600'>{typeEffect}</span></p>
         </div>
       </header>
-      <main className='h-[70%] flex flex-col items-center justify-start w-full'>
+      <main className='h-[140vh] flex flex-col items-center justify-start w-full'>
         
         <div>
-          <div className='flex justify-center h-[5%] items-center py-2'>
+          <div className='flex justify-center h-[7vh] items-center py-2'>
             <h1 className='text-2xl font-bold text-center'>LATEST POSTS</h1>
           </div>
           
-          <div className='grid items-center justify-center gap-10 h-[80vh] grid-cols-4'>
+          <div className='flex items-center justify-center h-[70vh]'>
             {displayBlogs()}
           </div>
           
-          <div className='h-[20vh] w-full grid grid-cols-4 justify-center items-center gap-8 bg-purple-100 mx-auto px-4 py-6'>
+          <div className='h-[28vh] w-full grid grid-cols-4 justify-center items-center gap-8 bg-purple-100 mx-auto px-4 py-6'>
             
             <div class="mx-auto p-6 block bg-white overflow-hidden h-full w-full rounded-lg">
               <div class="flex items-stretch flex-col gap-1">
@@ -101,7 +112,7 @@ const Home = () => {
             
           </div>
 
-          <div className='h-[23vh]'></div>
+          <div className='h-[35vh]'></div>
           
         </div>
       </main>

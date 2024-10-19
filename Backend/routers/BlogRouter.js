@@ -28,7 +28,7 @@ router.post('/add', (req,res) => {
 
 // Get all blog posts
 router.get('/getall', async (req, res) => {
-    Model.find()
+    blogModel.find()
     .then((result) => {
         res.status(200).json(result);
     }).catch((err) => {
@@ -39,7 +39,7 @@ router.get('/getall', async (req, res) => {
 
 // Get a single blog post by ID
 router.get('/get/:id', async (req, res) => {
-    Model.findById(req.params.id)
+    blogModel.findById(req.params.id)
     .then((result) => {
         res.status(200).json(result);
     }).catch((err) => {
@@ -49,7 +49,7 @@ router.get('/get/:id', async (req, res) => {
 
 // Update a blog post
 router.put('/update/:id', async (req, res) => {
-    Model.findByIdAndUpdate(req.params.id, req.body,{new : true})
+    blogModel.findByIdAndUpdate(req.params.id, req.body,{new : true})
     .then((result) => {
         res.status(200).json(result);
     }).catch((err) => {
@@ -60,7 +60,7 @@ router.put('/update/:id', async (req, res) => {
 
 // Delete a blog post
 router.delete('/delete/:id', async (req, res) => {
-    Model.findByIdAndDelete(req.params.id)
+    blogModel.findByIdAndDelete(req.params.id)
     .then((result) => {
         res.status(200).json(result);
     }).catch((err) => {
