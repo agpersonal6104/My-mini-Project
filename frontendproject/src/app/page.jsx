@@ -17,7 +17,7 @@ const Home = () => {
 
   const fetchBlogData = async ()=> {
     try {
-      const res = await axios.get('http://localhost:6000/user/getall');
+      const res = await axios.get('http://localhost:5000/blog/getall');
       console.log(res.status);
       setBlogList(res.data);
     }

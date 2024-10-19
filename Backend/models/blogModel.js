@@ -1,13 +1,20 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const { model, Schema } = require('../connections');
 
-// Define the schema
 const blogSchema = new Schema({
     title: {
         type: String,
         required: true
     },
-    imageUrl: { type: String },
+    imageUrl: { 
+        type: String,
+        validate: {
+            validator: function(v) {
+                const urlRegex = /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,6}(\/[^\s]*)?$/i;
+                return v == null || v.length < 1 || urlRegex.test(v); // Allow empty string
+            },
+            message: props => `${props.value} is not a valid URL!`
+        }
+    },
     description: {
         type: String,
         required: true
@@ -26,8 +33,4 @@ const blogSchema = new Schema({
     }
 });
 
-// Create the model
-const blogModel = mongoose.model('Blog', blogSchema);
-
-// Export the model
-module.exports = blogModel;
+module.exports = model('blog', blogSchema);
