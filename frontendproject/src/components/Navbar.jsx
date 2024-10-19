@@ -144,7 +144,7 @@ const Navbar = () => {
                   About Us
                 </Link>
                 <Link
-                  className={"flex items-center p-2 text-sm text-gray-800 rounded-lg "+ ( path === '/ContactUs' ? 'bg-gray-200' : 'bg-white')}
+                  className={"flex items-center p-2 text-sm text-gray-800 rounded-lg "+ ( path === '/contactUs' ? 'bg-gray-200' : 'bg-white')}
                   href="/contactUs"
                 >
                   <svg

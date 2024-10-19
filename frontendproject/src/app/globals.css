@@ -6,3 +6,8 @@
     background-image: url('https://devblogs.microsoft.com/wp-content/themes/devblogs-evo/images/landing-page/hero-landing.png');
     object-fit: fill;
 }
+
+#backgroundNew{
+    background-image: url('https://xmple.com/wallpaper/plain-pink-solid-color-single-one-colour-2048x1152-c-eec6db-f-24.svg');
+    object-fit: fill;
+}

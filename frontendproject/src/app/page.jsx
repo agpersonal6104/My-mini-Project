@@ -87,7 +87,7 @@ const Home = () => {
             <h1 className='text-3xl font-bold text-center'>LATEST POSTS</h1>
           </div>
           
-          <div className='items-center justify-center gap-2'>
+          <div className='items-center justify-center gap-2 py-8'>
             {displayBlogs()}
           </div>
           
