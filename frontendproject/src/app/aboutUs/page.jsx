@@ -1,19 +1,50 @@
+'use client';
 import React from 'react';
 
-const AboutUs = () => {
+function AboutUs() {
   return (
-    <div className='h-[90vh] flex items-center justify-center'>
-      <div className='max-w-md p-4 bg-white rounded shadow-md'>
-        <h1 className='mb-4 text-3xl font-bold'>Welcome to DevopBlogs</h1>
-        <p className='mb-4 text-lg'>
-        We're a community of passionate developers dedicated to sharing knowledge, insights, and experiences related to [specific programming languages, technologies, or development methodologies]. Our goal is to inspire and empower developers of all levels to grow their skills and stay up-to-date with the latest trends in the tech industry.
+    <div className="m-0 mx-auto h-[89vh] px-8 bg-purple-50">
+      <h1 className="mb-8 text-4xl font-bold text-center">About DevLopBlogs</h1>
+      <p className="mb-12 text-lg text-center text-gray-700">
+        DevLopBlogs is your go-to destination for all things development. We're a community-driven platform dedicated to empowering developers of all levels to learn, grow, and share their knowledge.
+      </p>
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <h2 className="mb-4 text-2xl font-semibold">Why choose DevLopBlogs?</h2>
+        <ul className="space-y-4">
+          <li className="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mr-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 6V3" />
+            </svg>
+            <span className="text-gray-700">Comprehensive Coverage: From front-end development to back-end technologies, databases, and beyond, we cover a wide range of topics.</span>
+          </li>
+          <li className="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mr-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 6V3" />
+            </svg>
+            <span className="text-gray-700">Expert Insights: Our contributors are experienced developers who share their real-world experiences and best practices.</span>
+          </li>
+          <li className="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mr-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 6V3" />
+            </svg>
+            <span className="text-gray-700">Community-Driven: We foster a supportive community where developers can connect, collaborate, and learn from each other.</span>
+          </li>
+          <li className="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mr-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 6V3" />
+            </svg>
+            <span className="text-gray-700">Free and Accessible: All our content is freely available, making it easy for anyone to access and benefit from our resources.</span>
+          </li>
+        </ul>
+      </div>
+      <div className="mt-12 text-center">
+        <h2 className="mb-4 text-2xl font-semibold">Join the DevLopBlogs community today!</h2>
+        <p className="text-lg text-gray-700">
+          Subscribe to our newsletter, follow us on social media, and contribute your own articles to help others on their coding journey.
         </p>
-        <button className='px-4 py-2 font-bold text-white bg-orange-500 rounded hover:bg-orange-700'>
-          Learn More
-        </button>
       </div>
     </div>
   );
-};
+}
 
 export default AboutUs;
