@@ -46,12 +46,12 @@ const Home = () => {
     }
     else
     {
-      return <div className='grid grid-cols-1 gap-4 px-4 lg:grid-cols-4'>
+      return <div className='grid grid-cols-1 gap-1 px-4 lg:gap-4 lg:grid-cols-4'>
         {
           blogList.map((blog) => {
             return <div key={blog._id} className='flex flex-col border rounded-md shadow-md h-[100%] container'>
               <img src={blog.imageUrl} alt="" className='w-[20%] self-center lg:w-[60%]' />
-              <div className='grid lg:grid-cols-2 lg:gap-2 border-b-2 h-[10%] items-center lg:px-2 grid-cols-1'>
+              <div className='grid grid-cols-2 lg:gap-2 md:border-b-2 h-[10%] items-center lg:px-2'>
                 <h1 className='text-sm font-bold lg:text-md'>{blog.author}</h1>
                 <h1 className='text-sm italic lg:text-md'>{blog.createdAt}</h1>
               </div>
@@ -91,7 +91,7 @@ const Home = () => {
             {displayBlogs()}
           </div>
           
-          <div className='grid items-center justify-center w-full grid-cols-2 gap-8 px-4 py-6 mx-auto bg-purple-100 lg:grid-cols-4'>
+          <div className='grid items-center justify-center w-full grid-cols-1 gap-8 px-4 py-6 mx-auto bg-purple-100 lg:grid-cols-4'>
             
             <div class="mx-auto p-6 block bg-white overflow-hidden h-full w-full rounded-lg">
               <div class="flex items-stretch flex-col gap-1">
