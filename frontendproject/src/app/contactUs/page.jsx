@@ -1,6 +1,51 @@
-import React from 'react'
+'use client';
+import { useFormik } from 'formik';
+import React from 'react';
+import * as Yup from 'yup';
+
+const contactUsSchema = Yup.object().shape({
+  firstName: Yup.string().required('Required'),
+  lastName: Yup.string().required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
+  phoneNumber: Yup.string().required('Required'),
+  details:Yup.string().required('required')
+});
 
 const ContactUs = () => {
+
+  const contactUsForm = useFormik({
+    initialValues:
+    {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phoneNumber: '',
+      details: ''
+    },
+    
+    onSubmit: (values, { resetForm, setSubmitting }) => {
+      console.log(values);
+      axios.post('http://localhost:5000/contacts/add', values)
+        .then((response) => {
+          console.log(response.status);
+          resetForm();
+          toast.success('User Registered Successfully!');
+        })
+        .catch((err) => {
+          setSubmitting(false);
+          console.error(err);
+          if (err.response) {
+            toast.error(err.response.data.message || "Network error occurred.");
+          } else if (err.request) {
+            toast.error("Failed to send request.");
+          } else {
+            toast.error("An unexpected error occurred.");
+          }
+        });
+    },
+    
+    validationSchema: contactUsSchema
+  });
   return (
     <div>
         <>
@@ -11,7 +56,7 @@ const ContactUs = () => {
         <h1 className="text-3xl font-bold text-gray-800 sm:text-4xl">
           Contact us
         </h1>
-        <p className="mt-1 text-gray-600 dark:text-neutral-400">
+        <p className="mt-1 text-gray-600">
           We'd love to talk about how we can help you.
         </p>
       </div>
@@ -21,7 +66,7 @@ const ContactUs = () => {
           <h2 className="mb-8 text-xl font-semibold text-gray-800">
             Fill in the form
           </h2>
-          <form>
+          <form onSubmit={contactUsForm.handleSubmit}>
             <div className="grid gap-4">
               {/* Grid */}
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -33,9 +78,18 @@ const ContactUs = () => {
                     type="text"
                     name="hs-firstname-contacts-1"
                     id="hs-firstname-contacts-1"
-                    className="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                    onChange={contactUsForm.handleChange}
+                    value={contactUsForm.values.firstName}
+                    className="block w-full px-4 py-3 text-sm border border-black rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
                     placeholder="First Name"
                   />
+                  {
+                    contactUsForm.touched.firstName && (
+                      <p className="mt-2 text-xs text-red-600" id="firstname-error">
+                        {contactUsForm.errors.firstName}
+                      </p>
+                    )
+                  }
                 </div>
                 <div>
                   <label htmlFor="hs-lastname-contacts-1" className="sr-only">
@@ -45,9 +99,18 @@ const ContactUs = () => {
                     type="text"
                     name="hs-lastname-contacts-1"
                     id="hs-lastname-contacts-1"
-                    className="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                    onChange={contactUsForm.handleChange}
+                    value={contactUsForm.values.lastName}
+                    className="block w-full px-4 py-3 text-sm border border-black rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
                     placeholder="Last Name"
                   />
+                  {
+                    contactUsForm.touched.lastName && (
+                      <p className="mt-2 text-xs text-red-600" id="lastname-error">
+                        {contactUsForm.errors.lasttName}
+                      </p>
+                    )
+                  }
                 </div>
               </div>
               {/* End Grid */}
@@ -59,22 +122,40 @@ const ContactUs = () => {
                   type="email"
                   name="hs-email-contacts-1"
                   id="hs-email-contacts-1"
+                  onChange={contactUsForm.handleChange}
+                  value={contactUsForm.values.email}
                   autoComplete="email"
-                  className="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                  className="block w-full px-4 py-3 text-sm border border-black rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
                   placeholder="Email"
                 />
+                {
+                    contactUsForm.touched.email && (
+                      <p className="mt-2 text-xs text-red-600" id="email-error">
+                        {contactUsForm.errors.email}
+                      </p>
+                    )
+                  }
               </div>
               <div>
                 <label htmlFor="hs-phone-number-1" className="sr-only">
                   Phone Number
                 </label>
                 <input
-                  type="text"
+                  type="string"
                   name="hs-phone-number-1"
                   id="hs-phone-number-1"
-                  className="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                  onChange={contactUsForm.handleChange}
+                  value={contactUsForm.values.phoneNumber}
+                  className="block w-full px-4 py-3 text-sm border border-black rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
                   placeholder="Phone Number"
                 />
+                {
+                    contactUsForm.touched.phoneNumber && (
+                      <p className="mt-2 text-xs text-red-600" id="phonenumber-error">
+                        {contactUsForm.errors.phoneNumber}
+                      </p>
+                    )
+                  }
               </div>
               <div>
                 <label htmlFor="hs-about-contacts-1" className="sr-only">
@@ -83,24 +164,34 @@ const ContactUs = () => {
                 <textarea
                   id="hs-about-contacts-1"
                   name="hs-about-contacts-1"
+                  onChange={contactUsForm.handleChange}
+                  value={contactUsForm.values.details}
                   rows={4}
-                  className="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                  className="block w-full px-4 py-3 text-sm border border-black rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
                   placeholder="Details"
                   defaultValue={""}
                 />
+                {
+                    contactUsForm.touched.details && (
+                      <p className="mt-2 text-xs text-red-600" id="details-error">
+                        {contactUsForm.errors.details}
+                      </p>
+                    )
+                  }
               </div>
             </div>
             {/* End Grid */}
             <div className="grid mt-4">
               <button
                 type="submit"
+                disabled={ contactUsForm.isSubmitting }
                 className="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-lg gap-x-2 hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
               >
                 Send inquiry
               </button>
             </div>
             <div className="mt-3 text-center">
-              <p className="text-sm text-gray-500 dark:text-neutral-500">
+              <p className="text-sm text-gray-500">
                 We'll get back to you in 1-2 business days.
               </p>
             </div>

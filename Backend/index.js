@@ -2,6 +2,7 @@
 const express = require('express');
 const UserRouter = require('../Backend/routers/UserRouter');
 const BlogRouter = require('../Backend/routers/BlogRouter');
+const ContactRouter = require('../Backend/routers/ContactRouter');
 const cors = require('cors');
 
 const app = express();
@@ -19,6 +20,10 @@ app.use('/user', UserRouter);
 // Blog middleware
 app.use(express.json());
 app.use('/blog', BlogRouter);
+
+// ContactUS Form Middleware
+app.use(express.json());
+app.use('/contacts', ContactRouter);
 
 app.get('/', (req, res) => {
     res.send('Welcome to my project');
