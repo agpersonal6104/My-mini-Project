@@ -163,7 +163,7 @@ const SignUp = () => {
           </form>
         </div>*/}
         <div className='max-w-xl mx-auto'>
-      <div className="bg-white border border-gray-200 shadow-sm mt-7 rounded-xl">
+      <div className="bg-white shadow-sm mt-7 rounded-xl">
         <div className="p-4 sm:p-7">
           <div className="text-center">
             <h1 className="block text-2xl font-bold text-gray-800">

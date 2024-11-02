@@ -6,11 +6,19 @@ import { useTypewriter } from 'react-simple-typewriter';
 
 const Home = () => {
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0'); // Get day and pad with zero if needed
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Get month (0-based) and pad with zero
+    const year = String(date.getFullYear()).slice(-2); // Get last two digits of the year
+    return `${day}-${month}-${year}`; // Return formatted date
+  };
+
   const[typeEffect] = useTypewriter({
     words: ['Latest Information','Latest Insights','Latest News'],
     loop: {},
     typeSpeed: 120,
-    deleteSpeed: 40
+    deleteSpeed: 120
   })
 
   const [blogList, setBlogList] = useState([]);
@@ -49,21 +57,25 @@ const Home = () => {
       return <div className='grid grid-cols-1 gap-1 px-4 lg:gap-4 lg:grid-cols-4'>
         {
           blogList.map((blog) => {
-            return <div key={blog._id} className='flex flex-col border rounded-md shadow-md h-[100%] container'>
-              <img src={blog.imageUrl} alt="" className='w-[20%] self-center lg:w-[60%]' />
-              <div className='grid grid-cols-2 lg:gap-2 md:border-b-2 h-[10%] items-center lg:px-2'>
-                <h1 className='text-sm font-bold lg:text-md'>{blog.author}</h1>
-                <h1 className='text-sm italic lg:text-md'>{blog.createdAt}</h1>
-              </div>
+            return <div key={blog._id} className='flex flex-col h-full border rounded-md shadow-md'>
               
-              <div className='flex items-center justify-center'>
-                <div className='text-center'>
-                  <h1 className='text-sm italic'>{blog.title}</h1>
-                  <h1 className='font-bold text-md'>{blog.description}</h1>
-                  <h1 className='text-sm font-bold'>{blog.content}</h1>
-                  <Link href={'/viewBlog/'+blog._id} >View</Link>
-                </div>
+                <img src={blog.imageUrl} alt="" className='w-[20%] self-center lg:w-[50%] rounded-md' />
+              
+                <div className='flex flex-col justify-between flex-grow p-4'>
+            <div className='flex items-center justify-center mb-2'>
+              <div className='text-center'>
+                <h1 className='font-bold text-md'>{blog.title}</h1>
+                <h1 className='italic text-md'>{blog.description}</h1>
+                <h1 className='text-sm italic lg:text-md'><span className='italic font-bold'>Published On: </span>{formatDate(blog.createdAt)}</h1>
               </div>
+            </div>
+
+            <div className='grid items-center grid-cols-2 border-t-2'>
+              <h1 className='text-sm font-bold lg:text-md'>{blog.author}</h1>
+              <Link href={'/viewBlog/' + blog._id} className='text-end hover:text-purple-500 hover:underline'>Read More</Link>
+            </div>
+          </div>
+              
               
             </div>
           })
