@@ -33,4 +33,4 @@ const buttonVariants = {
     )
   }
   
-  export { Button, buttonVariants };  
+  export { Button, buttonVariants };
