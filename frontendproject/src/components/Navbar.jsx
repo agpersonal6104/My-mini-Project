@@ -234,9 +234,9 @@ const Navbar = () => {
         <div className="flex flex-col py-2 sm:py-0 sm:flex-row sm:justify-end gap-y-2 sm:gap-y-0 sm:gap-x-6">
           <a
             className="text-sm font-medium hover:text-purple-700 focus:outline-none focus:text-purple-700"
-            href="#"
+            href="/myBlogs"
           >
-            Overview
+            My Blogs
           </a>
           <a
             className="text-sm font-medium text-gray-800 hover:text-purple-700 focus:outline-none focus:text-purple-700"
