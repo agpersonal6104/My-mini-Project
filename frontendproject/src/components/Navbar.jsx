@@ -78,7 +78,7 @@ const Navbar = () => {
               <div className="flex flex-col md:flex-row md:justify-end md:items-center gap-0.5 md:gap-1">
                 <Link
                   className={"flex items-center p-2 text-sm text-gray-800 rounded-lg "+ ( path === '/' ? 'bg-gray-200' : 'bg-white')}
-                  href="/"
+                  href="/manageBlog"
                   aria-current="page"
                 >
                   <svg
@@ -96,7 +96,7 @@ const Navbar = () => {
                     <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
                     <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
                   </svg>
-                  Landing
+                  Manage Blogs
                 </Link>
                 
                 <Link
