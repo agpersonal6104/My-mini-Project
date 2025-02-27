@@ -9,7 +9,7 @@ const Navbar = () => {
   console.log(path);
   
   return (
-    <div className='h-[11vh]'>
+    <div className='h-[6vh]'>
   {/* ========== HEADER ========== */}
   <header className="z-50 flex flex-wrap w-full bg-white border-b border-gray-200 md:justify-start md:flex-nowrap">
     <nav className="relative max-w-[85rem] w-full mx-auto md:flex md:items-center md:justify-between md:gap-3 py-2 px-4 sm:px-6 lg:px-8">
@@ -195,71 +195,6 @@ const Navbar = () => {
   </header>
   {/* ========== END HEADER ========== */}
   {/* Nav */}
-  <nav className="bg-white border-2 border-gray-400 border-bottom">
-    <div className="max-w-[85rem] w-full mx-auto sm:flex sm:flex-row sm:justify-between sm:items-center sm:gap-x-3 py-3 px-4 sm:px-6 lg:px-8">
-      <div className="flex items-center justify-between gap-x-3">
-        <div className="grow">
-          <span className="font-semibold text-gray-800 whitespace-nowrap">
-            My project
-          </span>
-        </div>
-        <button
-          type="button"
-          className="hs-collapse-toggle sm:hidden py-1.5 px-2 inline-flex items-center font-medium text-xs rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 focus:outline-none focus:bg-gray-100"
-          data-hs-collapse="#hs-nav-secondary"
-          aria-controls="hs-nav-secondary"
-          aria-label="Toggle navigation"
-        >
-          Overview
-          <svg
-            className="hs-dropdown-open:rotate-180 shrink-0 size-4 ms-1"
-            xmlns="http://www.w3.org/2000/svg"
-            width={24}
-            height={24}
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="m6 9 6 6 6-6" />
-          </svg>
-        </button>
-      </div>
-      <div
-        id="hs-nav-secondary"
-        className="hidden overflow-hidden transition-all duration-300 hs-collapse basis-full grow sm:block"
-      >
-        <div className="flex flex-col py-2 sm:py-0 sm:flex-row sm:justify-end gap-y-2 sm:gap-y-0 sm:gap-x-6">
-          <a
-            className="text-sm font-medium hover:text-purple-700 focus:outline-none focus:text-purple-700"
-            href="/myBlogs"
-          >
-            My Blogs
-          </a>
-          <a
-            className="text-sm font-medium text-gray-800 hover:text-purple-700 focus:outline-none focus:text-purple-700"
-            href="#"
-          >
-            Features
-          </a>
-          <a
-            className="text-sm font-medium text-gray-800 hover:text-purple-700 focus:outline-none focus:text-purple-700"
-            href="#"
-          >
-            Platforms
-          </a>
-          <a
-            className="text-sm font-medium text-gray-800 hover:text-purple-700 focus:outline-none focus:text-purple-700"
-            href="#"
-          >
-            Pricing
-          </a>
-        </div>
-      </div>
-    </div>
-  </nav>
   {/* End Nav */}
 </div>
 

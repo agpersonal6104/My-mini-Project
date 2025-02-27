@@ -23,6 +23,10 @@ const blogSchema = new Schema({
         type: String,
         required: true
     },
+    tag:{
+        type: String,
+        required: false
+    },
     author: {
         type: String,
         required: true

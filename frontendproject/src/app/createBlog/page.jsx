@@ -234,6 +234,7 @@ const CreateBlog = () => {
       imageUrl: '',
       description: '',
       content: '',
+      tag: '',
       author: '',
     },
     validationSchema: createBlogSchema,
@@ -382,6 +383,24 @@ const CreateBlog = () => {
             />
             {createBlogForm.errors.content && createBlogForm.touched.content && (
               <p className="mt-2 text-sm text-red-600">{createBlogForm.errors.content}</p>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor="tag" className="block mb-2 text-sm font-medium text-gray-700">
+              Tags
+            </label>
+            <textarea
+              id="tag"
+              name="tag"
+              placeholder="Enter the tags"
+              value={createBlogForm.values.tag}
+              onChange={createBlogForm.handleChange}
+              rows={4}
+              className="w-full px-4 py-2 border border-purple-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+            />
+            {createBlogForm.errors.tag && createBlogForm.touched.tag && (
+              <p className="mt-2 text-sm text-red-600">{createBlogForm.errors.tag}</p>
             )}
           </div>
 

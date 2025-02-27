@@ -370,7 +370,7 @@ const Home = () => {
       {/* Section Divider */}
       <Separator className="h-1 bg-gradient-to-r from-purple-600 to-purple-900" />
 
-      <main className="container flex-grow px-4 py-12 mx-auto">
+      <main className="container flex-grow w-full max-w-full px-4 py-12">
         {/* Latest Posts Section */}
         <div className="mb-16">
           <TypographyH2 className="mb-12 text-center underline">Latest Posts</TypographyH2>
@@ -399,12 +399,12 @@ const Home = () => {
                 {
                   icon: <Code className="w-10 h-10 text-purple-600" />,
                   title: "JavaScript",
-                  description: "The official blog of the JavaScript team",
+                  description: "The official blog of the JavaScript team, Hello developers",
                 },
                 {
                   icon: <Code className="w-10 h-10 text-purple-600" />,
-                  title: "React",
-                  description: "The official blog of the React team",
+                  title: "Data Science",
+                  description: "The official blog for Data Scientists and Staticians.",
                 },
               ].map((category, index) => (
                 <Card key={index} className="transition-transform bg-white hover:-translate-y-1">
@@ -412,6 +412,11 @@ const Home = () => {
                     <div className="mb-4">{category.icon}</div>
                     <TypographyH3 className="mb-2">{category.title}</TypographyH3>
                     <TypographyP className="text-gray-500">{category.description}</TypographyP>
+                    <Button variant="outline" size="sm" asChild>
+                      <Link href={"/tags"}>
+                        View More
+                      </Link>
+                    </Button>
                   </CardContent>
                 </Card>
               ))}

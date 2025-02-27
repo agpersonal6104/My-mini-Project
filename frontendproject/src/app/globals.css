@@ -4,7 +4,9 @@
 
 #backgroundHome{
     background-image: url('https://devblogs.microsoft.com/wp-content/themes/devblogs-evo/images/landing-page/hero-landing.png');
-    object-fit: fill;
+    object-fit: cover;
+    position: relative;
+    z-index: -1;
 }
 
 #backgroundNew{
